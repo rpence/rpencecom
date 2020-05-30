@@ -1,6 +1,5 @@
 import React from 'react';
 import Sketch from "react-p5";
-// import P5Wrapper from 'react-p5-wrapper';
 import LazyLoad from 'react-lazyload';
 
 
@@ -13,12 +12,12 @@ export default function Logo(props) {
 	}
 
 	const setup = (p5, canvasParentRef) => {
-		p5.createCanvas(window.innerWidth, window.innerHeight, p5.WEBGL)
+		p5.createCanvas(400, 250, p5.WEBGL).parent(canvasParentRef)
 	};
 
 
   	const draw = p5 => {
-	    p5.background(10, 10, 15);
+	    p5.background(20, 20, 25);
 	    p5.noStroke();
 	    let locX = p5.height / 2;
 	    let locY = p5.width / 2;
@@ -30,11 +29,10 @@ export default function Logo(props) {
 	    let y = 4 * Math.sin(timer);
 	    p5.rotateX(x);
 	    p5.rotateY(y);
-
-
 	    p5.fill(20, 0, 255);
-	    p5.ambientMaterial(150);
-	    p5.model(logo);
+		p5.ambientMaterial(190);
+		p5.scale(0.3);
+		p5.model(logo);
   	};
 
     return (
