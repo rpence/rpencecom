@@ -3,56 +3,140 @@ import dynamic from 'next/dynamic'
 import { makeStyles } from '@material-ui/styles';
 import fetch from 'isomorphic-unfetch';
 import Layout from '../components/Layout';
+import Galleryy from '../components/Gallery';
+import Link from 'next/link'
+import { motion } from 'framer-motion';
+import Header from '../components/Header';
 import Marquee from '../components/Marquee';
-import { request } from 'graphql-request'
 
+import Prismic from 'prismic-javascript'
+import { RichText } from 'prismic-reactjs'
+
+const apiEndpoint = 'https://ronniepence.cdn.prismic.io/api/v2'
+const accessToken = 'MC5YdFhpTGhBQUFCNEFKNlY4.Tu-_vQ3vv70wBlfvv71zPe-_ve-_ve-_ve-_ve-_ve-_ve-_vXfvv71s77-9LUdhQ0FDbB_vv73vv71t' 
+const Client = Prismic.client(apiEndpoint, { accessToken })
 
 const Logo = dynamic(() => 
 	import('../components/Logo'),
 	{ ssr: false }
 )
 
-const useStyles = makeStyles(() => {
+const useStyles = makeStyles((props) => {
     return {
-        gridContainer: { 
-			boxSizing: 'border-box',
-			maxHeight: '100%',
-			margin: 0,
-			fontFamily: 'DM Mono',
-			fontSize: '10px',
+		layoutGrid: {
+			height: '100%',
 			display: 'grid',
-  			padding: '24px',
-  			gridTemplateColumns: '1fr minmax(0px, 1.25fr) repeat(2, minmax(300px, .55fr))',
-  			gridTemplateRows: 'repeat(3, 1fr)',
-  			gap: '24px 24px',
-			gridTemplateAreas: '\'info main-content left right\' \'info main-content left right\' \'logo main-content left right\'',
+			gridTemplateColumns: 'minmax(450px, 1fr) minmax(0, .75fr) .75fr 1fr 1fr',
+			gridTemplateRows: '.1fr .1fr 1fr 1fr minmax(225px, 1fr)',
+			gridColumnGap: '0px',
+			gridRowGap: '0px',
+			transition: 'all ease 5s',
+			backgroundColor: '#fff'
 		},
-		right: { 
-			gridArea: 'right',
-			overflow: 'auto'
+		layoutGridWithContent: {
+			gridTemplateColumns: 'minmax(250px, 1fr) minmax(0, 1.75fr) 1.75fr .15fr 1fr',
+			gridTemplateRows: '.1fr .1fr 1fr 1fr 125px',
 		},
-		left: { 
-			gridArea: 'left',
-			overflow: 'auto'
+		div1: { 
+			gridArea: '1 / 1 / 2 / 6',
+			borderBottom: '2px solid #000',
+			textAlign: 'center',
+			lineHeight: '39px',
+			letterSpacing: '1px',
+			fontWeight: '700'
 		},
-		mainContent: { 
-			gridArea: 'main-content',
-			overflow: 'auto'
+		div2: { 
+			gridArea: '2 / 1 / 3 / 6', 
+			borderBottom: '2px solid #000',
+			padding: '0 24px',
+			lineHeight: '39px',
+			fontSize: '12px',
+			display: 'flex',
+			justifyContent: 'space-between'
 		},
-		info: { 
-			gridArea: 'info'
+		div3: { 
+			gridArea: '3 / 5 / 6 / 6', 
+			borderLeft: '2px solid #000',
+			overflow: 'hidden',
+			zIndex: 1,
+			backgroundColor: '#fff'
 		},
-		logo: { 
-			gridArea: 'logo'
+		div3WithContent: {
+			'&:before': {
+				content: '""',
+				display: 'block',
+				background: 'linear-gradient(45deg, rgba(0, 0, 0, 1) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 0), linear-gradient(45deg, rgba(0, 0, 0, 1) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 0), rgba(0, 0, 0, .2)',
+				backgroundRepeat: 'repeat, repeat',
+				backgroundPosition: '0px 0, 2px 2px',
+				backgroundOrigin: 'padding-box, padding-box',
+				backgroundClip: 'border-box, border-box',
+				backgroundSize: '4px 4px, 4px 4px',
+				width: '10px',
+				height: '100%',
+				position: 'fixed',
+				transform: 'translateX(-12px)'
+			}
 		},
-		blockquote: {
-			margin: 0,
-			padding: 0,
-			fontSize: '1.8rem',
+		div4: { 
+			gridArea: '3 / 4 / 6 / 5', 
+			borderLeft: '2px solid #000',
+			overflow: 'hidden',
 		},
-		cell: {
-			padding: '20px 0',
-			borderBottom: '1px solid #000'
+		div4WithContent: {
+			gridArea: '3 / 4 / 6 / 6', 
+		},
+		div5: { 
+			gridArea: '3 / 2 / 6 / 4',
+			overflow: 'auto', 
+		},
+		div5WithContent: {
+			borderLeft: '2px solid #000',
+		},
+		div6: { 
+			gridArea: '5 / 1 / 6 / 2', 
+			backgroundColor: '#111',
+		},
+		div6WithContent: {
+			gridArea: '5 / 1 / 6 / 1', 
+		},
+		div7: { 
+			gridArea: '3 / 1 / 5 / 4', 
+			backgroundColor: '#fff',
+			padding: '24px',
+			display: 'flex',
+			justifyContent: 'center',
+			alignContent: 'center',
+			flexDirection: 'column'
+		},
+		div7WithContent: {
+			gridArea: '3 / 1 / 5 / 1', 
+		},
+		text: {
+			fontSize: '.7rem',
+			padding: '12px'
+		},
+		intro: {
+			fontSize: '1.6rem'
+		},
+		introWithText: {
+			fontSize: '.8rem'
+		},
+		block: {
+			borderTop: '1px solid #000',
+			fontSize: '.8rem',
+			'& p': {
+				margin: '20px'
+			},
+			'& a': {
+				color: '#000',
+				textDecoration: 'none'
+			}
+		},
+		tag: {
+			display: 'inline-block',
+			border: '1px solid #000',
+			margin: '0 5px 0',
+			padding: '10px'
 		}
     }
 });
@@ -60,95 +144,95 @@ const useStyles = makeStyles(() => {
 export default function Index(props) {
 
 	const classes = useStyles();
+	const [doc, setDocData] = useState(null)
 
-	const [mountLogo, setMountLogo] = useState();
-	const [pages, setPages] = useState(null);
 
+	const [withContent, setWithContent] = useState(false);
 
 	useEffect(() => {
-		typeof window !== 'undefined' && setMountLogo(true)
-
-		const fetchPages = async () => {
-			const { pages } = await request (
-				'https://api-us-east-1.graphcms.com/v2/ckasumwa00pd101yshb8m6q5a/master',
-				`
-				{
-					pages {
-						id
-						title
-						previewPhoto {
-							id
-							url
-						}
-						description {
-							html
-						}
-					}
-				}	
-				`
-			);
-			setPages(pages);
-			console.log(pages);
-		};
-		fetchPages();
-	}, []);
-
+		// const fetchData = async () => {
+		// 	const response = await Client.query(
+		// 	  Prismic.Predicates.at('document.type', 'page')
+		// 	)
+		// 	if (response) {
+		// 	  setDocData(response.results)
+		// 	}
+		// }
+		// fetchData()
+		//props.data2 && setWithContent(true)
+	},[])
+	
 	function createMarkup(html) {
   		return {__html: html};
 	}
 
+	const evenPosts = props.data.filter( (i, index) => index % 2 == 0);
+	const oddPosts = props.data.filter( (i, index) => index % 2);
+
+	// const uniqueTags = tags.flat().filter((v, i, a) => a.indexOf(v) === i); 
+
 	return (
 		<Layout>
-			<div className={classes.gridContainer}>
-				<div className={classes.right}>
-					<Marquee dir="down">	
-						<div className={classes.cell}>
-							<img src="http://www.ronniepence.com/static/img/snapshots/logo1.jpg" />
-						</div>
-						<div className={classes.cell}>
-							<blockquote className={classes.blockquote}>"This website exists solely to magnify the prophets of the great property of the end of the belly."</blockquote>
-						</div>
-						<div className={classes.cell}>
-							<img src="http://www.ronniepence.com/static/img/cells/seed3875525.png" />
-							<p>Machine generated images and videos exploring the dichotomy of the colossal and the microscopic through like forms.</p>
-						</div>
-						<div className={classes.cell}>
-							<img src="https://scontent-lga3-1.cdninstagram.com/v/t51.2885-15/e35/36554142_238541703541219_167430804589248512_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&_nc_cat=107&_nc_ohc=SFSs312xb7cAX8jvyoQ&oh=58fcc5ee47c21e6a848d48c1882fdfa1&oe=5EF97997" />
-						</div>
+			<div className={`${classes.layoutGrid} ${ withContent && classes.layoutGridWithContent}`}>
+
+				<Header />
+
+				<div className={`${classes.div3} ${withContent && classes.div3WithContent}`}>
+
+					<Marquee dir="down">
+						{evenPosts.map((item, index) => {
+							return (
+								<div className={classes.block}>
+									<Link href={`work/${item.uid}`}>
+										<a>
+											<img alt='cover' src={item.data.preview_image.url} />
+											{RichText.render(item.data.description)}
+										</a>
+									</Link>
+								</div>
+							)
+						})}
 					</Marquee>
+
+						
+		
 				</div>
-				<div className={classes.left}>
+				<div className={`${classes.div4} ${withContent && classes.div4WithContent}`}>
 					<Marquee>
-						{pages && pages.map(({ id, title, previewPhoto, description }) => (
-							<div className={classes.cell} key={id}>
-								<img src={previewPhoto.url} />
-								{description && <div dangerouslySetInnerHTML={createMarkup(description.html)} />}
-							</div>
-						))}
+						{oddPosts.map((item, index) => {
+							return (
+								<div className={classes.block}>
+									<Link href={`work/${item.uid}`}>
+										<a>
+											<img alt='cover' src={item.data.preview_image.url} />
+											{RichText.render(item.data.description)}
+										</a>
+									</Link>
+								</div>
+							)
+						})}
 					</Marquee>
 				</div>
-				<div className={classes.mainContent}>
-					<div>
-						<p>1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, elit a congue suscipit, magna sapien accumsan mi, aliquam porttitor orci sem eu metus. Nunc vel ligula risus. Vestibulum egestas ante ut tellus fermentum, ut egestas ipsum fermentum. Nulla nec purus diam. Aenean facilisis vehicula libero a ornare. Pellentesque iaculis dui urna, interdum egestas diam cursus quis. Nunc id efficitur diam, commodo aliquet est. Fusce volutpat nec metus eget luctus. Curabitur nec orci lorem.</p>
-						<p>2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, elit a congue suscipit, magna sapien accumsan mi, aliquam porttitor orci sem eu metus. Nunc vel ligula risus. Vestibulum egestas ante ut tellus fermentum, ut egestas ipsum fermentum. Nulla nec purus diam. Aenean facilisis vehicula libero a ornare. Pellentesque iaculis dui urna, interdum egestas diam cursus quis. Nunc id efficitur diam, commodo aliquet est. Fusce volutpat nec metus eget luctus. Curabitur nec orci lorem.</p>
-						<p>3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, elit a congue suscipit, magna sapien accumsan mi, aliquam porttitor orci sem eu metus. Nunc vel ligula risus. Vestibulum egestas ante ut tellus fermentum, ut egestas ipsum fermentum. Nulla nec purus diam. Aenean facilisis vehicula libero a ornare. Pellentesque iaculis dui urna, interdum egestas diam cursus quis. Nunc id efficitur diam, commodo aliquet est. Fusce volutpat nec metus eget luctus. Curabitur nec orci lorem.</p>
-						<p>4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, elit a congue suscipit, magna sapien accumsan mi, aliquam porttitor orci sem eu metus. Nunc vel ligula risus. Vestibulum egestas ante ut tellus fermentum, ut egestas ipsum fermentum. Nulla nec purus diam. Aenean facilisis vehicula libero a ornare. Pellentesque iaculis dui urna, interdum egestas diam cursus quis. Nunc id efficitur diam, commodo aliquet est. Fusce volutpat nec metus eget luctus. Curabitur nec orci lorem.</p>				
-						<p>5 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, elit a congue suscipit, magna sapien accumsan mi, aliquam porttitor orci sem eu metus. Nunc vel ligula risus. Vestibulum egestas ante ut tellus fermentum, ut egestas ipsum fermentum. Nulla nec purus diam. Aenean facilisis vehicula libero a ornare. Pellentesque iaculis dui urna, interdum egestas diam cursus quis. Nunc id efficitur diam, commodo aliquet est. Fusce volutpat nec metus eget luctus. Curabitur nec orci lorem.</p>
-						<p>6 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, elit a congue suscipit, magna sapien accumsan mi, aliquam porttitor orci sem eu metus. Nunc vel ligula risus. Vestibulum egestas ante ut tellus fermentum, ut egestas ipsum fermentum. Nulla nec purus diam. Aenean facilisis vehicula libero a ornare. Pellentesque iaculis dui urna, interdum egestas diam cursus quis. Nunc id efficitur diam, commodo aliquet est. Fusce volutpat nec metus eget luctus. Curabitur nec orci lorem.</p>
-						<p>7 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, elit a congue suscipit, magna sapien accumsan mi, aliquam porttitor orci sem eu metus. Nunc vel ligula risus. Vestibulum egestas ante ut tellus fermentum, ut egestas ipsum fermentum. Nulla nec purus diam. Aenean facilisis vehicula libero a ornare. Pellentesque iaculis dui urna, interdum egestas diam cursus quis. Nunc id efficitur diam, commodo aliquet est. Fusce volutpat nec metus eget luctus. Curabitur nec orci lorem.</p>
-						<p>8 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, elit a congue suscipit, magna sapien accumsan mi, aliquam porttitor orci sem eu metus. Nunc vel ligula risus. Vestibulum egestas ante ut tellus fermentum, ut egestas ipsum fermentum. Nulla nec purus diam. Aenean facilisis vehicula libero a ornare. Pellentesque iaculis dui urna, interdum egestas diam cursus quis. Nunc id efficitur diam, commodo aliquet est. Fusce volutpat nec metus eget luctus. Curabitur nec orci lorem.</p>
-						<p>9 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, elit a congue suscipit, magna sapien accumsan mi, aliquam porttitor orci sem eu metus. Nunc vel ligula risus. Vestibulum egestas ante ut tellus fermentum, ut egestas ipsum fermentum. Nulla nec purus diam. Aenean facilisis vehicula libero a ornare. Pellentesque iaculis dui urna, interdum egestas diam cursus quis. Nunc id efficitur diam, commodo aliquet est. Fusce volutpat nec metus eget luctus. Curabitur nec orci lorem.</p>
-						<p>10 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, elit a congue suscipit, magna sapien accumsan mi, aliquam porttitor orci sem eu metus. Nunc vel ligula risus. Vestibulum egestas ante ut tellus fermentum, ut egestas ipsum fermentum. Nulla nec purus diam. Aenean facilisis vehicula libero a ornare. Pellentesque iaculis dui urna, interdum egestas diam cursus quis. Nunc id efficitur diam, commodo aliquet est. Fusce volutpat nec metus eget luctus. Curabitur nec orci lorem.</p>
-						<p>11 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, elit a congue suscipit, magna sapien accumsan mi, aliquam porttitor orci sem eu metus. Nunc vel ligula risus. Vestibulum egestas ante ut tellus fermentum, ut egestas ipsum fermentum. Nulla nec purus diam. Aenean facilisis vehicula libero a ornare. Pellentesque iaculis dui urna, interdum egestas diam cursus quis. Nunc id efficitur diam, commodo aliquet est. Fusce volutpat nec metus eget luctus. Curabitur nec orci lorem.</p>
-						<p>12 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, elit a congue suscipit, magna sapien accumsan mi, aliquam porttitor orci sem eu metus. Nunc vel ligula risus. Vestibulum egestas ante ut tellus fermentum, ut egestas ipsum fermentum. Nulla nec purus diam. Aenean facilisis vehicula libero a ornare. Pellentesque iaculis dui urna, interdum egestas diam cursus quis. Nunc id efficitur diam, commodo aliquet est. Fusce volutpat nec metus eget luctus. Curabitur nec orci lorem.</p>
-						<p>13 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, elit a congue suscipit, magna sapien accumsan mi, aliquam porttitor orci sem eu metus. Nunc vel ligula risus. Vestibulum egestas ante ut tellus fermentum, ut egestas ipsum fermentum. Nulla nec purus diam. Aenean facilisis vehicula libero a ornare. Pellentesque iaculis dui urna, interdum egestas diam cursus quis. Nunc id efficitur diam, commodo aliquet est. Fusce volutpat nec metus eget luctus. Curabitur nec orci lorem.</p>
-						<p>14 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, elit a congue suscipit, magna sapien accumsan mi, aliquam porttitor orci sem eu metus. Nunc vel ligula risus. Vestibulum egestas ante ut tellus fermentum, ut egestas ipsum fermentum. Nulla nec purus diam. Aenean facilisis vehicula libero a ornare. Pellentesque iaculis dui urna, interdum egestas diam cursus quis. Nunc id efficitur diam, commodo aliquet est. Fusce volutpat nec metus eget luctus. Curabitur nec orci lorem.</p>
-					</div>
+				<div className={`${classes.div5} ${classes.div5WithContent}`}>
+						{props.data2 && props.data2.Content.map((block, index) => {
+							return (
+								<Galleryy data={block} />
+							)
+						})}
 				</div>
-				<div className={classes.info}>
+				<div className={`${classes.div6} ${withContent && classes.div6WithContent}`}>
+					<Logo />
 				</div>
-   			 	<div className={classes.logo}>
-					{mountLogo && <Logo />}
+				<div className={`${classes.div7} ${withContent && classes.div7WithContent}`}>
+					<p className={`${classes.intro} ${withContent && classes.introWithText}`}>As a creative developer with a background in design, I’m interested in highlighting the creative component of technology to enhance people’s understanding of both. I combine technology with thoughtful design to create immersive digital experiences that drive a compelling narrative and often take on a physical dimension.</p>
+						
+					{/* {!withContent && uniqueTags.map((i) => {
+						return (
+							<div className={classes.tag}>
+								{i}
+							</div>
+						)
+					})} */}
 				</div>
 			</div>
 		</Layout>
@@ -156,8 +240,10 @@ export default function Index(props) {
 };
 
 Index.getInitialProps = async function() {
-	const res = await fetch('http://ronnie.mydroogs.com/cockpit/api/collections/get/project?token=9c67d31452921679bfe35d6e7d405d');
-	const data = await res.json();
-	return data.entries[0];
+	const response = await Client.query(
+		Prismic.Predicates.at('document.type', 'page')
+	)
+	const data =  await response.results;
+	return {data: data};
 };
 

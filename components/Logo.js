@@ -12,7 +12,7 @@ export default function Logo(props) {
 	}
 
 	const setup = (p5, canvasParentRef) => {
-		p5.createCanvas(400, 250, p5.WEBGL).parent(canvasParentRef)
+		p5.createCanvas(canvasParentRef.clientWidth, canvasParentRef.clientWidth / 2, p5.WEBGL).parent(canvasParentRef)
 	};
 
 
@@ -32,17 +32,12 @@ export default function Logo(props) {
 	    p5.fill(20, 0, 255);
 		p5.ambientMaterial(190);
 		p5.scale(0.3);
-		p5.model(logo);
+		logo && p5.model(logo);
   	};
 
     return (
         <> 
-			{typeof window !== 'undefined' && (
-				<LazyLoad>
-					<Sketch preload={preload} setup={setup} draw={draw} />			
-				</LazyLoad>
-			)}
-			
-        </>
+			<Sketch preload={preload} setup={setup} draw={draw} />			
+	    </>
     );
 };

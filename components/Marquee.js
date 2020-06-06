@@ -1,54 +1,63 @@
-import React, { useState, useEffect, useRef } from 'react';
-
-function translateXCSS(numPx) {
+ import React from 'react';
+ import { useState } from 'react';
+ import { useEffect } from 'react';
+ import { useRef } from 'react';
+ 
+const translateXCSS = numPx => {
     return `translateY(${numPx}px)`;
 }
+ 
+ const Marquee = (props) => {
+     const ref = useRef();
+     
+     useEffect(() => {
+        const marq = ref.current;
+        let requestId, i = 0;
 
-export default function Marquee(props) {
-    
-    const marqueeContainer = useRef(null);
+        if(props.dir === "down") {
+            i = marq.clientHeight / 2
+        }
+        const render = () => {
+            const height = marq.clientHeight;
 
-    const [count, setCount] = useState(0)
-
-    useEffect(() => {
-        setCount(props.dir === "down" ? marqueeContainer.current.clientHeight / 2 : 0);
-    }, [])
-
-    function countFunction() {
-        typeof window !== 'undefined' && requestAnimationFrame(() => {
             if(props.dir === "down") {
-                if(count > 0) {
-                    setCount(count - .5)
+                if(i > 0) {
+                    i -= .5;
                 } else {
-                    setCount(marqueeContainer.current.clientHeight / 2);
-                }
-            } else {
-                if(count <= marqueeContainer.current.clientHeight / 2) {
-                    setCount(count + .5)
-                } else {
-                    setCount(0)
+                    i = height / 2;
                 }
             }
-            marqueeContainer.current.style.transform = translateXCSS(-count);
-        });
+            else {
+                if(i <= height / 2) {
+                    i += .5;
+                } else {
+                    i = 0;
+                }
+            }
+            marq.style.transform = translateXCSS(-i);
+            requestId = requestAnimationFrame(render);
+         };
 
-    }
-    countFunction();
-    
+         render();
+        
+         return () => {
+            cancelAnimationFrame(requestId);
+        };
+
+     },[]);
+
     const Child = () => (
         <span>
             {props.children}
         </span>
     );
-
-    return (
-        <div className="container">
-            <div className="row">
-                <div className="cards-wrap" ref={marqueeContainer}>
-                    <Child />
-                    <Child />
-                </div>
-            </div>
-        </div>
-    )
-}
+     
+     return (
+         <div ref={ref}>
+             <Child />
+             <Child />
+         </div>
+     );
+ };
+ 
+export default Marquee;

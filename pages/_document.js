@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/styles'
+import Header from '../components/Header';
 
 
 class MyDocument extends Document {

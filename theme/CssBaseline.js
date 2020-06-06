@@ -12,7 +12,6 @@ const useStyles = makeStyles(() => {
   				unicodeRange: "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
 			}],
 			html: {
-				padding: 0,
 				margin: 0,
 				height: '100%'
 			},
@@ -23,7 +22,11 @@ const useStyles = makeStyles(() => {
 				padding: 0,
 				margin: 0,
 				fontFamily: '\'DM Mono\'',
-				height: '100%'
+				height: '100%',
+				// background: 'conic-gradient(rgba(255,130,130,1) 0%, rgba(255,209,104,1) 15%, rgba(247,255,154,1) 33%, rgba(116,255,119,1) 47%, rgba(111,192,255,1) 63%, rgba(163,134,255,1) 83%, rgba(255,130,130,1) 100%)'
+			},
+			'h1': {
+				fontSize: '20px'
 			},
 			'.p5Canvas': {
 				width: '100%',
@@ -34,10 +37,22 @@ const useStyles = makeStyles(() => {
 			},
 			'main': {
 				maxHeight: '100%',
-				height: '100vh',
-				width: '100vw',
-				overflow: 'hidden'
-			}
+				height: 'calc(100vh)',
+				width: 'calc(100vw)',
+				overflow: 'hidden',
+
+			},
+			// '::-webkit-scrollbar': {
+			// 	width: '5px'
+			// },
+			// '::-webkit-scrollbar-track': {
+			// 	background: '#000',
+			// },
+			// '::-webkit-scrollbar-thumb': {
+			// 	backgroundColor: '#fff',
+			// 	border: '1px solid #ff',
+			// 	marginLeft: '5px'
+			// }
 		}
 	}
 });
