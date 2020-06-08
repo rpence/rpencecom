@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic'
 import { makeStyles } from '@material-ui/styles';
-import Layout from '../components/Layout';
+import Layout from '../../components/Layout';
 import Link from 'next/link'
 import { AnimateSharedLayout, AnimatePresence } from "framer-motion";
 
-import Prismic from 'prismic-javascript'
-import { RichText } from 'prismic-reactjs'
+import ComponentRender from '../../components/ComponentRender'
 
+import Prismic from 'prismic-javascript'
 
 const apiEndpoint = 'https://ronniepence.cdn.prismic.io/api/v2'
 const accessToken = 'MC5YdFhpTGhBQUFCNEFKNlY4.Tu-_vQ3vv70wBlfvv71zPe-_ve-_ve-_ve-_ve-_ve-_ve-_vXfvv71s77-9LUdhQ0FDbB_vv73vv71t' 
 const Client = Prismic.client(apiEndpoint, { accessToken })
 
 const Logo = dynamic(() => 
-	import('../components/Logo'),
+	import('../../components/Logo'),
 	{ ssr: false }
 )
 
 const useStyles = makeStyles((props) => {
-
 });
 
 export default function Index(props) {
@@ -34,28 +33,17 @@ export default function Index(props) {
 		<Layout>
 			<AnimateSharedLayout type="crossfade">
 				<div className={classes.blockContainer}>
-					{props.data.map((item, index) => {
-						return (
-							<Link href={`test/${item.uid}`}>
-								<a>
-									<div className={classes.block}>
-										{RichText.render(item.data.title)}
-									</div>
-								</a>
-							</Link>
-						)
-					})}
+					<ComponentRender data={props.data.data.body} />
 				</div>
 			</AnimateSharedLayout>
 		</Layout>
 	)
 };
 
-Index.getInitialProps = async function() {
+Index.getInitialProps = async function(ctx) {
 	const response = await Client.query(
-		Prismic.Predicates.at('document.type', 'page')
+		Prismic.Predicates.at('my.page.uid', ctx.query.id)
 	)
 	const data =  await response.results;
-	return {data: data};
+	return {data: data[0]};
 };
-

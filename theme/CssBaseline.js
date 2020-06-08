@@ -34,25 +34,7 @@ const useStyles = makeStyles(() => {
 			},
 			'#__next': {
 				maxHeight: '100%'
-			},
-			'main': {
-				maxHeight: '100%',
-				height: 'calc(100vh)',
-				width: 'calc(100vw)',
-				overflow: 'hidden',
-
-			},
-			// '::-webkit-scrollbar': {
-			// 	width: '5px'
-			// },
-			// '::-webkit-scrollbar-track': {
-			// 	background: '#000',
-			// },
-			// '::-webkit-scrollbar-thumb': {
-			// 	backgroundColor: '#fff',
-			// 	border: '1px solid #ff',
-			// 	marginLeft: '5px'
-			// }
+			}
 		}
 	}
 });
