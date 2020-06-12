@@ -8,6 +8,8 @@ import { AnimateSharedLayout, AnimatePresence } from "framer-motion";
 import ComponentRender from '../../components/ComponentRender'
 
 import Prismic from 'prismic-javascript'
+import { RichText } from 'prismic-reactjs'
+
 
 const apiEndpoint = 'https://ronniepence.cdn.prismic.io/api/v2'
 const accessToken = 'MC5YdFhpTGhBQUFCNEFKNlY4.Tu-_vQ3vv70wBlfvv71zPe-_ve-_ve-_ve-_ve-_ve-_ve-_vXfvv71s77-9LUdhQ0FDbB_vv73vv71t' 
@@ -18,12 +20,7 @@ const Logo = dynamic(() =>
 	{ ssr: false }
 )
 
-const useStyles = makeStyles((props) => {
-});
-
 export default function Index(props) {
-
-	const classes = useStyles();
 	
 	function createMarkup(html) {
   		return {__html: html};
@@ -32,7 +29,9 @@ export default function Index(props) {
 	return (
 		<Layout>
 			<AnimateSharedLayout type="crossfade">
-				<div className={classes.blockContainer}>
+				<div>
+					{RichText.render(props.data.data.title)}
+					{RichText.render(props.data.data.description)}
 					<ComponentRender data={props.data.data.body} />
 				</div>
 			</AnimateSharedLayout>

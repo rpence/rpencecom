@@ -1,6 +1,7 @@
 import React from 'react';
 import Embed from '../components/Embed';
 import Gallery from '../components/Gallery';
+import TextBlock from '../components/TextBlock';
 
 export default function ComponentRender(props) {
 
@@ -12,6 +13,8 @@ export default function ComponentRender(props) {
                     return Gallery(props)
                 case 'embed':
                     return Embed(props)
+                case 'text_block':
+                    return TextBlock(props)
                 default:
                     return null;
                 }
