@@ -1,30 +1,60 @@
  import React from 'react';
- import { useState } from 'react';
  import { useEffect } from 'react';
  import { useRef } from 'react';
- 
-const translateXCSS = numPx => {
+ import { makeStyles, mergeClasses } from '@material-ui/styles';
+
+const translateYCSS = numPx => {
     return `translateY(${numPx}px)`;
 }
+const translateXCSS = numPx => {
+    return `translateX(${numPx}px)`;
+}
+const useStyles = makeStyles((props) => {
+    return {
+        marqueeContainer: {
+            whiteSpace: 'nowrap',
+            position: 'fixed',
+            bottom: 0,
+            left: 0,
+            minWidth: '100%',
+            backgroundColor: '#000',
+            color: '#FFF',
+
+            '& span': {
+                whiteSpace: 'nowrap',
+            }
+        }
+    }
+});
  
- const Marquee = (props) => {
-     const ref = useRef();
+const Marquee = (props) => {
+    const ref = useRef();
+    const classes = useStyles();
      
-     useEffect(() => {
+    useEffect(() => {
         const marq = ref.current;
         let requestId, i = 0;
 
         if(props.dir === "down") {
             i = marq.clientHeight / 2
         }
+
         const render = () => {
             const height = marq.clientHeight;
+            const width = marq.clientWidth;
 
             if(props.dir === "down") {
                 if(i > 0) {
                     i -= .5;
                 } else {
                     i = height / 2;
+                }
+            }
+            else if(props.dir === "ltr") {
+                if(i <= width / 2) {
+                    i += .5;
+                } else {
+                    i = 0;
                 }
             }
             else {
@@ -34,7 +64,11 @@ const translateXCSS = numPx => {
                     i = 0;
                 }
             }
-            marq.style.transform = translateXCSS(-i);
+            if(props.dir === "ltr") {
+                marq.style.transform = translateXCSS(-i);
+            } else {
+                marq.style.transform = translateYCSS(-i);
+            }
             requestId = requestAnimationFrame(render);
          };
 
@@ -44,7 +78,7 @@ const translateXCSS = numPx => {
             cancelAnimationFrame(requestId);
         };
 
-     },[]);
+    },[]);
 
     const Child = () => (
         <span>
@@ -52,12 +86,12 @@ const translateXCSS = numPx => {
         </span>
     );
      
-     return (
-         <div ref={ref}>
-             <Child />
-             <Child />
-         </div>
-     );
+    return (
+        <div ref={ref} className={classes.marqueeContainer}>
+            <Child />
+            <Child />
+        </div>
+    );
  };
  
 export default Marquee;

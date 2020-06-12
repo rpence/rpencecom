@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import Layout from '../components/Layout';
 import Link from 'next/link'
 import { AnimateSharedLayout, AnimatePresence } from "framer-motion";
+import Marquee from '../components/Marquee';
 
 import Prismic from 'prismic-javascript'
 import { RichText } from 'prismic-reactjs'
@@ -19,7 +20,20 @@ const Logo = dynamic(() =>
 )
 
 const useStyles = makeStyles((props) => {
+	return {
+		blockContainer: {
+			marginBottom: '50px'
+		},
+		blockContainerLink: {
+			borderBottom: '1px solid #000',
+			color: '#000',
 
+			'& a': {
+				textDecoration: 'none',
+				color: '#000',
+			}
+		}
+	}
 });
 
 export default function Index(props) {
@@ -33,19 +47,23 @@ export default function Index(props) {
 	return (
 		<Layout>
 			<AnimateSharedLayout type="crossfade">
+				<Logo />
 				<div className={classes.blockContainer}>
 					{props.data.map((item, index) => {
 						return (
-							<Link href={`test/${item.uid}`}>
-								<a>
-									<div className={classes.block}>
-										{RichText.render(item.data.title)}
-									</div>
-								</a>
-							</Link>
+							<div className={classes.blockContainerLink}>
+								<Link href={`test/${item.uid}`}>
+									<a>
+										<div className={classes.block}>
+											{RichText.render(item.data.title)}
+										</div>
+									</a>
+								</Link>
+							</div>
 						)
 					})}
 				</div>
+				<Marquee dir="ltr">BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM BLM </Marquee>
 			</AnimateSharedLayout>
 		</Layout>
 	)

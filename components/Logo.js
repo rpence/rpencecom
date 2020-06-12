@@ -31,7 +31,7 @@ export default function Logo(props) {
 	    p5.rotateY(y);
 	    p5.fill(20, 0, 255);
 		p5.ambientMaterial(190);
-		p5.scale(0.3);
+		p5.scale(0.8);
 		logo && p5.model(logo);
   	};
 
