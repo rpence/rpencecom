@@ -72,9 +72,9 @@ const Marquee = (props) => {
             requestId = requestAnimationFrame(render);
          };
 
-         render();
+        render();
         
-         return () => {
+        return () => {
             cancelAnimationFrame(requestId);
         };
 
