@@ -7,7 +7,11 @@ const useStyles = makeStyles((props) => {
 	return {
 		block: {
 			padding: '10px 0 20px',
-		},
+        },
+        block_sm: {
+            padding: '10px 0 10px',
+            borderBottom: '2px solid #000'
+        },
 		blockContainerLink: {
 			borderBottom: '1px solid #000',
 			color: '#000',
@@ -29,7 +33,7 @@ const useStyles = makeStyles((props) => {
                     flexBasis: '15%',
                     flexGrow: 0,
                     flexShrink: 0,
-                    paddingLeft: '30px'
+                    paddingLeft: '60px'
                 },
                 '& > div:nth-of-type(3)': {
                     textAlign: 'left',
@@ -37,8 +41,8 @@ const useStyles = makeStyles((props) => {
                     paddingLeft: '30px'
                 },
                 '& > div:last-of-type': {
-                    width: '10%',
-                    flexBasis: '10%',
+                    width: '5%',
+                    flexBasis: '5%',
                     flexGrow: 0,
                     flexShrink: 0,
                     textAlign: 'right'
@@ -46,10 +50,18 @@ const useStyles = makeStyles((props) => {
             }
 		},
 		small: {
-            fontSize: '.8rem',
+            fontSize: '.7rem',
             marginTop: '10px',
+            display: 'block',
+            textTransform: 'uppercase'
+        },
+        desc: {
+            fontSize: '.7rem'
+        },
+        strong: {
+            marginBottom: '20px',
             display: 'block'
-		}
+        }
     }
 })
 
@@ -59,7 +71,40 @@ export default function WorkList(props) {
     
     return (
         <> 
+            <strong className={classes.strong}>// Archive </strong>
+
+            <div className={classes.blockContainerLink}>
+                <a>
+                    <div className={classes.block_sm}>
+                        <span className={classes.small}>
+                            PROJECT
+                        </span>
+                    </div>
+                    <div className={classes.block_sm}>
+                        <span className={classes.small}>
+                            MEDIUM
+                        </span>
+                    </div>
+                    <div className={classes.block_sm}>
+                        <span className={classes.small}>
+                            TAGS
+                        </span>
+                    </div>
+                    <div className={classes.block_sm}>
+                        <span className={classes.small}>
+                            YEAR
+                        </span>
+                    </div>
+                </a>
+            </div>
+
             {props.data.map((item, index) => {
+
+
+                const filters = item.data.body.filter( (item, index) => {
+                    return item.slice_type === 'tags'
+                });
+
                 return (
                     <div className={classes.blockContainerLink}>
                         <Link href={`test/${item.uid}`}>
@@ -69,7 +114,7 @@ export default function WorkList(props) {
                                         <div>
                                             {RichText.asText(item.data.title)}
                                         </div>
-                                        <span className={classes.small}>{item.data.short_description}</span>
+                                        <span className={classes.desc}>{item.data.short_description}</span>
                                     </div>
                                 </div>
                                 <div className={classes.block}>
@@ -79,7 +124,12 @@ export default function WorkList(props) {
                                 </div>
                                 <div className={classes.block}>
                                     <span className={classes.small}>
-                                        {JSON.stringify(item.tags)}
+                                        {filters[0] && filters[0].items && filters[0].items.map((item, index) => {
+                                            return (
+                                                <>{item.tags.slug}</>
+                                            )
+                                        })}
+
                                     </span>
                                 </div>
                                 <div className={classes.block}>

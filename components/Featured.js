@@ -7,7 +7,7 @@ const useStyles = makeStyles((props) => {
 	return {
         featuredBlock: {
             display: 'flex',
-            margin: '50px -15px',
+            margin: '0 -15px 50px',
         },
 		block: {
 			padding: '10px 0 20px',
@@ -31,7 +31,12 @@ const useStyles = makeStyles((props) => {
             fontSize: '.8rem',
             marginTop: '10px',
             display: 'block'
-		}
+        },
+        strong: {
+            display: 'block',
+            marginTop: '60px',
+            marginBottom: '20px'
+        }
     }
 })
 
@@ -40,27 +45,30 @@ export default function Featured(props) {
     const classes = useStyles();
     
     return (
-        <div className={classes.featuredBlock}> 
-            {props.data.map((item, index) => {
-                return (
-                    <div className={classes.blockContainerLink}>
-                        <Link href={`test/${item.uid}`}>
-                            <a>
-                                <div className={classes.block}>
-                                    <div className={classes.featuredImage}>
-                                        <img src={item.data.preview_image.url} />
+        <>
+            <strong className={classes.strong}>//Featured Work </strong>
+            <div className={classes.featuredBlock}> 
+                {props.data.map((item, index) => {
+                    return (
+                        <div className={classes.blockContainerLink}>
+                            <Link href={`test/${item.uid}`}>
+                                <a>
+                                    <div className={classes.block}>
+                                        <div className={classes.featuredImage}>
+                                            <img src={item.data.preview_image.url} />
+                                        </div>
+                                        <div>
+                                            {RichText.asText(item.data.title)}
+                                        </div>
+                                        <span className={classes.small}>{item.data.short_description}</span>
                                     </div>
-                                    <div>
-                                        {RichText.asText(item.data.title)}
-                                    </div>
-                                    <span className={classes.small}>{item.data.short_description}</span>
-                                </div>
-                            </a>
-                        </Link>
-                    </div>
-                )
-            })}
-        </div>
+                                </a>
+                            </Link>
+                        </div>
+                    )
+                })}
+            </div>
+        </>
     )
 }
 

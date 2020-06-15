@@ -2,6 +2,8 @@ import React from 'react';
 import dynamic from 'next/dynamic'
 import { makeStyles } from '@material-ui/styles';
 import X from '../components/X';
+import Link from 'next/link'
+
 
 const Logo = dynamic(() => 
 	import('../components/Logo'),
@@ -79,7 +81,11 @@ export default function Header(props) {
         <>
             <header className={classes.header}>
                 <div className={classes.logo}>
-                    <Logo />
+                    <Link href="/">
+                        <a>
+                            <Logo />
+                        </a>
+                    </Link>
                 </div>
                 <div className={classes.descContainer}>
                     {/* <X includeText /> */}
