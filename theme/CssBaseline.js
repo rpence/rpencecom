@@ -26,7 +26,7 @@ const useStyles = makeStyles(() => {
 				// background: 'conic-gradient(rgba(255,130,130,1) 0%, rgba(255,209,104,1) 15%, rgba(247,255,154,1) 33%, rgba(116,255,119,1) 47%, rgba(111,192,255,1) 63%, rgba(163,134,255,1) 83%, rgba(255,130,130,1) 100%)'
 			},
 			'h1': {
-				fontSize: '20px',
+				fontSize: '26px',
 				fontFamily: 'Cotham Sans'
 			},
 			'.p5Canvas': {

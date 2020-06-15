@@ -1,53 +1,71 @@
 import React from 'react';
+import dynamic from 'next/dynamic'
 import { makeStyles } from '@material-ui/styles';
-import Music from '../components/Music';
+import X from '../components/X';
+
+const Logo = dynamic(() => 
+	import('../components/Logo'),
+	{ ssr: false }
+)
 
 const useStyles = makeStyles((props) => {
     return {
-		div1: { 
-			gridArea: '1 / 1 / 2 / 6',
-			borderBottom: '2px solid #000',
-			textAlign: 'center',
-			lineHeight: '39px',
-			letterSpacing: '1px',
-			fontWeight: '700'
-		},
-		div2: { 
-			gridArea: '2 / 1 / 3 / 6', 
-			borderBottom: '2px solid #000',
-			padding: '0 24px',
-			lineHeight: '39px',
-			fontSize: '12px',
+		header: {
 			display: 'flex',
-			justifyContent: 'space-between'
-        },
-        iconContainer: {
-            borderLeft: '2px solid #000',
-            padding: '0 20px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignContent: 'center',
-            textAlign: 'center'
-        },
-        icon: {
-			width: '15px',
-        },
-        icons: {
-            height: '100%',
-            display: 'flex',
-            justifyContent: 'center'
-        },
-        sun: {
-            width: '30px',
-        },
-		textSize1: {
-			fontSize: '.6rem'
+			height: '150px',
+			borderBottom: '1px solid #000'
 		},
-		textSize2: {
-			fontSize: '.9rem'
+		logo: {
+			flexShrink: 0,
+			flexBasis: '400px'
 		},
-		textSize3: {
-			fontSize: '1.2rem'
+		x: {
+			flexGrow: 0,
+			flexBasis: '100px',
+			flexShrink: 0,
+			maxWidth: '100px'
+		},
+		desc: {
+			fontSize: '.8rem',
+			padding: '20px'
+		},
+		descContainer: {
+			flexGrow: 1,
+			flexBasis: 'calc(100% - 300px -300px - 100px)'
+		},
+		nav: {
+			flexShrink: 0,
+			flexBasis: '300px',
+			borderRight: '1px solid #000',
+			borderLeft: '1px solid #000',
+
+			'& ul': {
+				listStyle: 'none',
+				padding: 0,
+				margin: 0,
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'space-evenly',
+				height: '100%',
+
+				'& li': {
+					borderBottom: '1px solid #000',
+					height: '33.3%',
+					display: 'flex',
+					justifyContent: 'center',
+					flexDirection: 'column',
+
+					'& a': {
+						color: '#000',
+						padding: '20px',
+						textDecoration: 'none'
+					},
+
+					'&:last-of-type': {
+						borderBottom: 0
+					}
+				}
+			}
 		}
     }
 });
@@ -59,23 +77,25 @@ export default function Header(props) {
 
     return (
         <>
-            <div className={classes.div1}>RONNIE PENCE</div>
-            <div className={classes.div2}>
-                <Music />
-                <div className={classes.icons}>
-                    <div className={classes.iconContainer}>
-                        <img src="/static/imgs/sun.svg" className={classes.sun} />
-                    </div>
-                    <div className={classes.iconContainer}>
-                        <img src="/static/grid.svg" className={classes.icon} />
-                    </div>
-                    <div className={classes.iconContainer}>
-                        <span className={classes.textSize1}>A</span>
-                        <span className={classes.textSize2}>A</span>
-                        <span className={classes.textSize3}>A </span>
-                    </div>
+            <header className={classes.header}>
+                <div className={classes.logo}>
+                    <Logo />
                 </div>
-            </div>
+                <div className={classes.descContainer}>
+                    {/* <X includeText /> */}
+                    <p className={classes.desc}>As a creative developer with a background in design, I’m interested in highlighting the creative component of technology to enhance people’s understanding of both. I combine technology with thoughtful design to create immersive digital experiences that drive a compelling narrative and often take on a physical dimension.</p>
+                </div>
+                <div className={classes.nav}>
+                    <ul>
+                        <li><a href="#">Work</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div className={classes.x}>
+                    <X />
+                </div>
+            </header>
         </>
     )
 }

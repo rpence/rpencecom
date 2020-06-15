@@ -4,6 +4,10 @@ import { makeStyles, ThemeProvider, ServerStyleSheets } from '@material-ui/style
 import theme from '../theme/Index.js';
 import CssBaseline from '../theme/CssBaseline.js';
 import logo from '../public/static/logo';
+import Header from '../components/Header';
+import Marquee from '../components/Marquee';
+import Music from '../components/Music'
+
 
 const useStyles = makeStyles(() => {
     return {
@@ -35,7 +39,9 @@ export default function Layout(props) {
             </Head>
             <ThemeProvider theme={theme}>
                 <main>
+                    <Header />
                     {props.children}
+                    <Marquee dir="ltr">BLM · <Music /> · BLM · <Music /> · BLM <Music /> · BLM · <Music /> · BLM · <Music /> · </Marquee>
                 </main>
             </ThemeProvider>
         </>

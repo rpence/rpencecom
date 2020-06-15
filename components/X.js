@@ -46,10 +46,10 @@ export default function X(props) {
         var ctx = c.getContext("2d");
         c.width = cc.clientWidth*factor;
         c.height = cc.clientHeight*factor;
-        ctx.moveTo(factor, factor);
+        ctx.moveTo(0, 0);
         ctx.lineTo(cc.clientWidth*factor, cc.clientHeight*factor);
-        ctx.moveTo(cc.clientWidth*factor, factor);
-        ctx.lineTo(factor, cc.clientHeight*factor);
+        ctx.moveTo(cc.clientWidth*factor, 0);
+        ctx.lineTo(0, cc.clientHeight*factor);
         ctx.lineWidth = factor;
         ctx.stroke();
     },[])
