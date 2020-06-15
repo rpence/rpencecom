@@ -43,6 +43,8 @@ export default function Filters(props) {
             <div>
                 <CheckMark label="Web Development" />
                 <CheckMark label="Data Objects" />
+                <CheckMark label="Text Posts" />
+                <CheckMark label="Code" />
             </div>
         </div>
     )
