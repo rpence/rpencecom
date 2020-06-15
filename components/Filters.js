@@ -32,7 +32,7 @@ export default function Filters(props) {
                 <CheckMark label="Hardware" />
                 <CheckMark label="Data Visualization" />
                 <CheckMark label="Video" />
-                <CheckMark label="Misc." />
+                <CheckMark label="Everything Else" />
             </div>
             <div>
                 <CheckMark label="Metal Working" />
