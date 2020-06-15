@@ -14,8 +14,36 @@ const useStyles = makeStyles((props) => {
 
 			'& a': {
 				textDecoration: 'none',
-				color: '#000',
-			}
+                color: '#000',
+                display: 'flex',
+                justifyContent: 'stretch',
+
+                '& > div:first-of-type': {
+                    width: '50%',
+                    flexBasis: '50%',
+                    flexGrow: 0,
+                    flexShrink: 0
+                },
+                '& > div:nth-of-type(2)': {
+                    width: '15%',
+                    flexBasis: '15%',
+                    flexGrow: 0,
+                    flexShrink: 0,
+                    paddingLeft: '30px'
+                },
+                '& > div:nth-of-type(3)': {
+                    textAlign: 'left',
+                    flexGrow: 1,
+                    paddingLeft: '30px'
+                },
+                '& > div:last-of-type': {
+                    width: '10%',
+                    flexBasis: '10%',
+                    flexGrow: 0,
+                    flexShrink: 0,
+                    textAlign: 'right'
+                },
+            }
 		},
 		small: {
             fontSize: '.8rem',
@@ -36,11 +64,28 @@ export default function WorkList(props) {
                     <div className={classes.blockContainerLink}>
                         <Link href={`test/${item.uid}`}>
                             <a>
-                                <div className={classes.block}>
-                                    <div>
-                                        {RichText.asText(item.data.title)}
+                                <div>
+                                    <div className={classes.block}>
+                                        <div>
+                                            {RichText.asText(item.data.title)}
+                                        </div>
+                                        <span className={classes.small}>{item.data.short_description}</span>
                                     </div>
-                                    <span className={classes.small}>{item.data.short_description}</span>
+                                </div>
+                                <div className={classes.block}>
+                                    <span className={classes.small}>
+                                        {item.data.medium}
+                                    </span>
+                                </div>
+                                <div className={classes.block}>
+                                    <span className={classes.small}>
+                                        {JSON.stringify(item.tags)}
+                                    </span>
+                                </div>
+                                <div className={classes.block}>
+                                    <span className={classes.small}>
+                                        {item.data.year}
+                                    </span>
                                 </div>
                             </a>
                         </Link>
