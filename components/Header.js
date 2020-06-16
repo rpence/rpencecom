@@ -28,8 +28,11 @@ const useStyles = makeStyles((props) => {
 			maxWidth: '100px'
 		},
 		desc: {
-			fontSize: '.8rem',
-			padding: '20px'
+            fontSize: '.85rem',
+            lineHeight: 1.6,
+            letterSpacing: '.5px',
+            padding: '20px',
+            fontFamily: 'Cotham Sans',
 		},
 		descContainer: {
 			flexGrow: 1,

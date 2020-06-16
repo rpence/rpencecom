@@ -28,9 +28,14 @@ const useStyles = makeStyles((props) => {
             marginBottom: '20px'
         },
 		small: {
-            fontSize: '.8rem',
+            fontSize: '.85rem',
+            lineHeight: 1.6,
             marginTop: '10px',
-            display: 'block'
+            display: 'block',
+            fontFamily: 'Cotham Sans',
+        },
+        title: {
+            fontFamily: 'Cotham Sans',
         },
         strong: {
             display: 'block',
@@ -57,7 +62,7 @@ export default function Featured(props) {
                                         <div className={classes.featuredImage}>
                                             <img src={item.data.preview_image.url} />
                                         </div>
-                                        <div>
+                                        <div className={classes.title}>
                                             {RichText.asText(item.data.title)}
                                         </div>
                                         <span className={classes.small}>{item.data.short_description}</span>

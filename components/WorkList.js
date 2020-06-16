@@ -41,8 +41,8 @@ const useStyles = makeStyles((props) => {
                     paddingLeft: '30px'
                 },
                 '& > div:last-of-type': {
-                    width: '5%',
-                    flexBasis: '5%',
+                    width: '8%',
+                    flexBasis: '8%',
                     flexGrow: 0,
                     flexShrink: 0,
                     textAlign: 'right'
@@ -56,7 +56,13 @@ const useStyles = makeStyles((props) => {
             textTransform: 'uppercase'
         },
         desc: {
-            fontSize: '.7rem'
+            fontSize: '.85rem',
+            fontFamily: 'Cotham Sans',
+            letterSpacing: '.8px'
+        },
+        title: {
+            fontFamily: 'Cotham Sans',
+            margin: '5px 0'
         },
         strong: {
             marginBottom: '20px',
@@ -111,7 +117,7 @@ export default function WorkList(props) {
                             <a>
                                 <div>
                                     <div className={classes.block}>
-                                        <div>
+                                        <div className={classes.title}>
                                             {RichText.asText(item.data.title)}
                                         </div>
                                         <span className={classes.desc}>{item.data.short_description}</span>
@@ -125,8 +131,9 @@ export default function WorkList(props) {
                                 <div className={classes.block}>
                                     <span className={classes.small}>
                                         {filters[0] && filters[0].items && filters[0].items.map((item, index) => {
+                                            const length = filters[0].items.length - 1;
                                             return (
-                                                <>{item.tags.slug}</>
+                                                <>{item.tags.slug}{index !== length ? ', ' : null}</>
                                             )
                                         })}
 
