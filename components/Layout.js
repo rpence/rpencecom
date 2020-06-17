@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { makeStyles, ThemeProvider, ServerStyleSheets } from '@material-ui/styles';
 import theme from '../theme/Index.js';
@@ -41,7 +41,9 @@ export default function Layout(props) {
                 <main>
                     <Header />
                     {props.children}
-                    <Marquee dir="ltr">BLM · <Music /> · BLM · <Music /> · BLM <Music /> · BLM · <Music /> · BLM · <Music /> · </Marquee>
+                    <Marquee dir="ltr">
+                        &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;BLM&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; <Music />
+                    </Marquee>
                 </main>
             </ThemeProvider>
         </>

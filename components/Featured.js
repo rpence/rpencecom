@@ -55,7 +55,7 @@ export default function Featured(props) {
             <div className={classes.featuredBlock}> 
                 {props.data.map((item, index) => {
                     return (
-                        <div className={classes.blockContainerLink}>
+                        <div className={classes.blockContainerLink} key={item.uid}>
                             <Link href={`test/${item.uid}`}>
                                 <a>
                                     <div className={classes.block}>

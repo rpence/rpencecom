@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import { makeStyles } from '@material-ui/styles';
 import X from '../components/X';
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 
 const Logo = dynamic(() => 
@@ -79,6 +80,7 @@ const useStyles = makeStyles((props) => {
 export default function Header(props) {
 
     const classes = useStyles();
+    const router = useRouter();
 
     return (
         <>
@@ -91,8 +93,7 @@ export default function Header(props) {
                     </Link>
                 </div>
                 <div className={classes.descContainer}>
-                    {/* <X includeText /> */}
-                    <p className={classes.desc}>As a creative developer with a background in design, I’m interested in highlighting the creative component of technology to enhance people’s understanding of both. I combine technology with thoughtful design to create immersive digital experiences that drive a compelling narrative and often take on a physical dimension.</p>
+                    {Object.keys(router.query).length === 0 ? <p className={classes.desc}>As a creative developer with a background in design, I’m interested in highlighting the creative component of technology to enhance people’s understanding of both. I combine technology with thoughtful design to create immersive digital experiences that drive a compelling narrative and often take on a physical dimension.</p> : <X includeText />}
                 </div>
                 <div className={classes.nav}>
                     <ul>
@@ -107,4 +108,8 @@ export default function Header(props) {
             </header>
         </>
     )
+}
+
+Header.getInitialProps = async function(ctx) {
+    return {page: ctx.query.id}
 }

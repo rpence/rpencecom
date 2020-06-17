@@ -1,11 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Layout from '../components/Layout';
-import Filters from '../components/Filters';
-import WorkList from '../components/WorkList'
-
-import Featured from '../components/Featured'
-
+import All from '../components/All'
 import Prismic from 'prismic-javascript'
 
 
@@ -47,18 +43,11 @@ export default function Index(props) {
   		return {__html: html};
 	}
 
-
-	const featured = props.data.filter((item, i) => {
-		return item.data.featured
-	})
-
-
 	return (
 		<Layout>
 			<div className={classes.blockContainer}>
-				<Filters />
-				<Featured data={featured} />
-				<WorkList data={props.data} />
+				<All 
+					data={props.data} />
 			</div>
 		</Layout>
 	)

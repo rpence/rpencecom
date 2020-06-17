@@ -20,37 +20,86 @@ const useStyles = makeStyles((props) => {
     }
 })
 
-export default function Filters(props) {
+export default function Filters({filterToggle}) {
 
     const classes = useStyles();
+
     
     return (
         <>
             <strong className={classes.strong}>// Filters </strong>
             <div className={classes.filters}>
-                <div>
-                    <CheckMark label="Digital" />
-                    <CheckMark label="Photography" />
-                    <CheckMark label="Objects" />
-                    <CheckMark label="Games" />
+                <div>    
+                    <CheckMark
+                        filterToggle={filterToggle}	
+                        label="Digital"
+                        uid="digital" />
+                    <CheckMark 
+                        filterToggle={filterToggle}
+                        label="Photography"
+                        uid="photography" />
+                    <CheckMark
+                        filterToggle={filterToggle}
+                        label="Objects"
+                        uid="objects" />
+                    <CheckMark
+                        filterToggle={filterToggle}
+                        label="Games"
+                        uid="games" />
                 </div>
                 <div>
-                    <CheckMark label="Hardware" />
-                    <CheckMark label="Data Visualization" />
-                    <CheckMark label="Video" />
-                    <CheckMark label="Everything Else" />
+                    <CheckMark 
+                        filterToggle={filterToggle}
+                        label="Hardware"
+                        uid="hardware"/>
+                    <CheckMark label="Data Visualization" 
+                        label="Data Visualization" 
+                        filterToggle={filterToggle}
+                        uid="data-visualization"/>
+                    <CheckMark 
+                        label="Video"
+                        filterToggle={filterToggle}
+                        uid="video" />
+                    <CheckMark 
+                        label="Everything Else"
+                        filterToggle={filterToggle}
+                        uid="everything-else" />
                 </div>
                 <div>
-                    <CheckMark label="Metal Working" />
-                    <CheckMark label="Craft Builds" />
-                    <CheckMark label="Logos" />
-                    <CheckMark label="Machine Learning" />
+                    <CheckMark 
+                        label="Metal Working"
+                        filterToggle={filterToggle}
+                        uid="metal-working" />
+                    <CheckMark 
+                        label="Craft Builds"
+                        filterToggle={filterToggle}
+                        uid="craft-builds" />
+                    <CheckMark 
+                        label="Logos"
+                        filterToggle={filterToggle}
+                        uid="logos" />
+                    <CheckMark 
+                        label="Machine Learning"
+                        filterToggle={filterToggle}
+                        uid="machine-learning" />
                 </div>
                 <div>
-                    <CheckMark label="Web Development" />
-                    <CheckMark label="Data Objects" />
-                    <CheckMark label="Text Posts" />
-                    <CheckMark label="Code" />
+                    <CheckMark 
+                        label="Web Development"
+                        filterToggle={filterToggle}
+                        uid="web-development" />
+                    <CheckMark 
+                        label="Data Objects"
+                        filterToggle={filterToggle}
+                        uid="data-objects" />
+                    <CheckMark 
+                        label="Text Posts"
+                        filterToggle={filterToggle}
+                        uid="text-posts" />
+                    <CheckMark 
+                        label="Code"
+                        filterToggle={filterToggle}
+                        uid="code" />
                 </div>
             </div>
         </>

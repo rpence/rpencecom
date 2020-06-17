@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import X from './X';
 import { makeStyles } from '@material-ui/styles';
 
@@ -12,7 +12,8 @@ const useStyles = makeStyles(() => {
             marginBottom: '20px',
             lineHeight: '15px',
             fontSize: '.7rem',
-            textTransform: 'uppercase'
+            textTransform: 'uppercase',
+            cursor: 'pointer'
         },
         checkmark: {
             width: '13px',
@@ -28,18 +29,23 @@ const useStyles = makeStyles(() => {
 export default function CheckMark(props) {
 
     const classes = useStyles();
+
+    const [toggle, setToggle] = useState(false)
     
 
-    useEffect(() => {
-  
-    },[])
+    const handleToggle = (uid) => {
+        props.filterToggle(uid)
+        setToggle(!toggle)
+    }
 
 
     return (
-        <> 
-            <div className={classes.checkmarkContainer}>
+        <>
+            <div 
+                className={classes.checkmarkContainer}
+                onClick={(() => handleToggle(props.uid))}>
                 <div className={classes.checkmark}>
-                    <X />
+                    {toggle && <X />}
                 </div> 
                 {props.label}
             </div>

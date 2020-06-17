@@ -3,6 +3,7 @@ import Layout from '../../components/Layout';
 import ComponentRender from '../../components/ComponentRender'
 import { makeStyles } from '@material-ui/styles';
 
+import All from '../../components/All'
 
 import Prismic from 'prismic-javascript'
 import { RichText } from 'prismic-reactjs'
@@ -16,7 +17,28 @@ const useStyles = makeStyles((props) => {
 	return {
 		mainContent: {
 			padding: '20px',
-			maxWidth: '1100px'
+			maxWidth: 'calc(100% - 100px - 50px)'
+		},
+		menuContent: {
+			position: 'fixed',
+			left: 'calc(100% - 101px)',
+			height: '100%',
+			overflow: 'scroll',
+			width: '100vw',
+			borderLeft: '1px solid #000',
+			top: '0',
+			backgroundColor: '#fff',
+			paddingLeft: '30px'
+		},
+		draggable: {
+			position: 'fixed',
+			top: '50%',
+			left: 'calc(100% - 101px - 10px)',
+			marginTop: 'calc(-42px/2)',
+			background: '#fff',
+			border: '1px solid #000',
+			padding: '10px 5px',
+			cursor: 'pointer'
 		},
 		desc: {
 			maxWidth: '75%',
@@ -44,6 +66,11 @@ export default function Index(props) {
 				</div>
 				<ComponentRender data={props.data.data.body} />
 			</div>
+			<div className={classes.menuContent}>
+				<All 
+					data={props.allPosts}
+					hideFeatured />
+			</div>
 		</Layout>
 	)
 };
@@ -53,5 +80,12 @@ Index.getInitialProps = async function(ctx) {
 		Prismic.Predicates.at('my.page.uid', ctx.query.id)
 	)
 	const data =  await response.results;
-	return {data: data[0]};
+
+	const postResponse = await Client.query(
+		Prismic.Predicates.at('document.type', 'page'),
+		{ pageSize : 100 }
+	)
+	const allPosts =  await postResponse.results;
+
+	return {data: data[0], allPosts: allPosts};
 };

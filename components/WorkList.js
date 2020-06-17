@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
@@ -12,9 +12,15 @@ const useStyles = makeStyles((props) => {
             padding: '10px 0 10px',
             borderBottom: '2px solid #000'
         },
+        blockContainerLinkNone: {
+            textAlign: 'center',
+            margin: '25px 0'
+        },
 		blockContainerLink: {
 			borderBottom: '1px solid #000',
-			color: '#000',
+            color: '#000',
+            position: 'relative',
+            zIndex: 1,
 
 			'& a': {
 				textDecoration: 'none',
@@ -67,6 +73,14 @@ const useStyles = makeStyles((props) => {
         strong: {
             marginBottom: '20px',
             display: 'block'
+        },
+        hoverImg: {
+            position: 'fixed',
+            top: '50%',
+            left: '60%',
+            transform: 'translate(0, -50%)',
+            zIndex: 0,
+            width: '500px'
         }
     }
 })
@@ -74,6 +88,12 @@ const useStyles = makeStyles((props) => {
 export default function WorkList(props) {
 
     const classes = useStyles();
+
+    const [image, setImage] = useState(null)
+    
+    const handleHover = (url) => {
+        setImage(url);
+    }
     
     return (
         <> 
@@ -104,51 +124,59 @@ export default function WorkList(props) {
                 </a>
             </div>
 
-            {props.data.map((item, index) => {
+            {props.data.length > 0 ? (
+                <>
+                    {setImage && <img src={image} className={classes.hoverImg} />}
 
+                    {props.data.map((item, index) => {
 
-                const filters = item.data.body.filter( (item, index) => {
-                    return item.slice_type === 'tags'
-                });
+                        const filters = item.data.body.filter( (item, index) => {
+                            return item.slice_type === 'tags'
+                        });
 
-                return (
-                    <div className={classes.blockContainerLink}>
-                        <Link href={`test/${item.uid}`}>
-                            <a>
-                                <div>
-                                    <div className={classes.block}>
-                                        <div className={classes.title}>
-                                            {RichText.asText(item.data.title)}
+                        return (
+                            <div className={classes.blockContainerLink} key={item.uid}>
+                                <Link href={`test/${item.uid}`}>
+                                    <a 
+                                        onMouseEnter={() => handleHover(item.data.preview_image.url)}
+                                        onMouseLeave={() => handleHover(null)}>
+                                        <div>
+                                            <div className={classes.block}>
+                                                <div className={classes.title}>
+                                                    {RichText.asText(item.data.title)}
+                                                </div>
+                                                <span className={classes.desc}>{item.data.short_description}</span>
+                                            </div>
                                         </div>
-                                        <span className={classes.desc}>{item.data.short_description}</span>
-                                    </div>
-                                </div>
-                                <div className={classes.block}>
-                                    <span className={classes.small}>
-                                        {item.data.medium}
-                                    </span>
-                                </div>
-                                <div className={classes.block}>
-                                    <span className={classes.small}>
-                                        {filters[0] && filters[0].items && filters[0].items.map((item, index) => {
-                                            const length = filters[0].items.length - 1;
-                                            return (
-                                                <>{item.tags.slug}{index !== length ? ', ' : null}</>
-                                            )
-                                        })}
+                                        <div className={classes.block}>
+                                            <span className={classes.small}>
+                                                {item.data.medium}
+                                            </span>
+                                        </div>
+                                        <div className={classes.block}>
+                                            <span className={classes.small}>
+                                                {JSON.stringify(item.tags)}
+                                            </span>
+                                        </div>
+                                        <div className={classes.block}>
+                                            <span className={classes.small}>
+                                                {item.data.year}
+                                            </span>
+                                        </div>
+                                    </a>
+                                </Link>
+                            </div>
+                        )
+                    })}
+                </>
+            ) : (
+                <>
+                    <div className={classes.blockContainerLinkNone}>There's nothing that matches the filters selected. Try something else?</div>
+                </>
+            )}
 
-                                    </span>
-                                </div>
-                                <div className={classes.block}>
-                                    <span className={classes.small}>
-                                        {item.data.year}
-                                    </span>
-                                </div>
-                            </a>
-                        </Link>
-                    </div>
-                )
-            })}
+
+            
         </>
     )
 }

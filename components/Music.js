@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 
 export default function Music(props) {
 
-    const [tracks, setTracks] = useState();
+	const [tracks, setTracks] = useState();
 
     useEffect(() => {
 		const fetchTracks = async () => {
@@ -17,7 +17,11 @@ export default function Music(props) {
 
     return (
         <>
-            ♫ {tracks && tracks.recenttracks && tracks.recenttracks.track[0].name} — {tracks && tracks.recenttracks && tracks.recenttracks.track[0].artist['#text']}
+            &nbsp;&nbsp;&nbsp;&nbsp; ♫ {tracks && tracks.recenttracks && tracks.recenttracks.track[0].name} — {tracks && tracks.recenttracks && tracks.recenttracks.track[0].artist['#text']} ♫ &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; 
+            ♫ {tracks && tracks.recenttracks && tracks.recenttracks.track[0].name} — {tracks && tracks.recenttracks && tracks.recenttracks.track[0].artist['#text']} ♫ &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; 
+            ♫ {tracks && tracks.recenttracks && tracks.recenttracks.track[0].name} — {tracks && tracks.recenttracks && tracks.recenttracks.track[0].artist['#text']} ♫ &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; 
+			♫ {tracks && tracks.recenttracks && tracks.recenttracks.track[0].name} — {tracks && tracks.recenttracks && tracks.recenttracks.track[0].artist['#text']} ♫ &nbsp;&nbsp;&nbsp;&nbsp;
+
         </>
     )
 }

@@ -19,6 +19,7 @@ const useStyles = makeStyles((props) => {
             minWidth: '100%',
             backgroundColor: '#000',
             color: '#FFF',
+            zIndex: 3,
 
             '& span': {
                 whiteSpace: 'nowrap',
@@ -32,6 +33,8 @@ const Marquee = (props) => {
     const classes = useStyles();
      
     useEffect(() => {
+
+        
         const marq = ref.current;
         let requestId, i = 0;
 
