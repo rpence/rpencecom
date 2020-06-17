@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Layout from '../../components/Layout';
 import ComponentRender from '../../components/ComponentRender'
 import { makeStyles } from '@material-ui/styles';
+import Head from 'next/head'
 
 import All from '../../components/All'
 
@@ -70,24 +71,29 @@ export default function Index(props) {
 	}
 
 	return (
-		<Layout>
-			<div className={classes.mainContent}>
-				{RichText.render(props.data.data.title)}
-				<div className={classes.desc}>
-					{RichText.render(props.data.data.description)}
+		<>
+			<Head>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
+			<Layout>
+				<div className={classes.mainContent}>
+					{RichText.render(props.data.data.title)}
+					<div className={classes.desc}>
+						{RichText.render(props.data.data.description)}
+					</div>
+					<ComponentRender data={props.data.data.body} />
 				</div>
-				<ComponentRender data={props.data.data.body} />
-			</div>
-			<div className={`${classes.menuContent} ${toggleState ? classes.toggled : null}`}>
-				<div 
-					className={`${classes.draggable} ${toggleState ? classes.toggledDraggable : null}`}
-					onClick={(() => handleToggle())}
-				>⇿</div>
-				<All 
-					data={props.allPosts}
-					hideFeatured />
-			</div>
-		</Layout>
+				<div className={`${classes.menuContent} ${toggleState ? classes.toggled : null}`}>
+					<div 
+						className={`${classes.draggable} ${toggleState ? classes.toggledDraggable : null}`}
+						onClick={(() => handleToggle())}
+					>⇿</div>
+					<All 
+						data={props.allPosts}
+						hideFeatured />
+				</div>
+			</Layout>
+		</>
 	)
 };
 

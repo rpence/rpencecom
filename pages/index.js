@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 import Layout from '../components/Layout';
 import All from '../components/All'
 import Prismic from 'prismic-javascript'
+import Head from 'next/head'
 
 
 const apiEndpoint = 'https://ronniepence.cdn.prismic.io/api/v2'
@@ -44,12 +45,17 @@ export default function Index(props) {
 	}
 
 	return (
-		<Layout>
-			<div className={classes.blockContainer}>
-				<All 
-					data={props.data} />
-			</div>
-		</Layout>
+		<>
+			<Head>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
+			<Layout>
+				<div className={classes.blockContainer}>
+					<All 
+						data={props.data} />
+				</div>
+			</Layout>
+		</>
 	)
 };
 
