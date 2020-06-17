@@ -33,7 +33,7 @@ const useStyles = makeStyles((props) => {
             lineHeight: 1.6,
             letterSpacing: '.5px',
             padding: '20px',
-            fontFamily: 'Cotham Sans',
+            fontFamily: '\'Cotham Sans\'',
 		},
 		descContainer: {
 			flexGrow: 1,

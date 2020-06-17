@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../../components/Layout';
 import ComponentRender from '../../components/ComponentRender'
 import { makeStyles } from '@material-ui/styles';
@@ -30,6 +30,9 @@ const useStyles = makeStyles((props) => {
 			backgroundColor: '#fff',
 			paddingLeft: '30px'
 		},
+		toggled: {
+			left: '50px'
+		},
 		draggable: {
 			position: 'fixed',
 			top: '50%',
@@ -40,11 +43,14 @@ const useStyles = makeStyles((props) => {
 			padding: '10px 5px',
 			cursor: 'pointer'
 		},
+		toggledDraggable: {
+			left: '40px'
+		},
 		desc: {
 			maxWidth: '75%',
 			fontSize: '1.1rem',
 			lineHeight: '1.6',
-			fontFamily: 'Cotham Sans'
+			fontFamily: '\'Cotham Sans\'',
 		}
 	}
 })
@@ -52,6 +58,12 @@ const useStyles = makeStyles((props) => {
 export default function Index(props) {
 
 	const classes = useStyles();
+	
+	const [toggleState, setToggleState] = useState();
+
+	const handleToggle = () => {
+		setToggleState(!toggleState);
+	}
 	
 	function createMarkup(html) {
   		return {__html: html};
@@ -66,7 +78,11 @@ export default function Index(props) {
 				</div>
 				<ComponentRender data={props.data.data.body} />
 			</div>
-			<div className={classes.menuContent}>
+			<div className={`${classes.menuContent} ${toggleState ? classes.toggled : null}`}>
+				<div 
+					className={`${classes.draggable} ${toggleState ? classes.toggledDraggable : null}`}
+					onClick={(() => handleToggle())}
+				>⇿</div>
 				<All 
 					data={props.allPosts}
 					hideFeatured />

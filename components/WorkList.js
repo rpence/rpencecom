@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
+import { linkResolver } from './util'
 
 const useStyles = makeStyles((props) => {
 	return {
@@ -63,11 +64,11 @@ const useStyles = makeStyles((props) => {
         },
         desc: {
             fontSize: '.85rem',
-            fontFamily: 'Cotham Sans',
+            fontFamily: '\'Cotham Sans\'',
             letterSpacing: '.8px'
         },
         title: {
-            fontFamily: 'Cotham Sans',
+            fontFamily: '\'Cotham Sans\'',
             margin: '5px 0'
         },
         strong: {
@@ -136,7 +137,7 @@ export default function WorkList(props) {
 
                         return (
                             <div className={classes.blockContainerLink} key={item.uid}>
-                                <Link href={`test/${item.uid}`}>
+                                <Link href={`/work/${item.uid}`}>
                                     <a 
                                         onMouseEnter={() => handleHover(item.data.preview_image.url)}
                                         onMouseLeave={() => handleHover(null)}>

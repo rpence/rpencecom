@@ -32,10 +32,10 @@ const useStyles = makeStyles((props) => {
             lineHeight: 1.6,
             marginTop: '10px',
             display: 'block',
-            fontFamily: 'Cotham Sans',
+            fontFamily: '\'Cotham Sans\'',
         },
         title: {
-            fontFamily: 'Cotham Sans',
+            fontFamily: '\'Cotham Sans\'',
         },
         strong: {
             display: 'block',
