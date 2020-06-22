@@ -4,7 +4,7 @@ import ComponentRender from '../../components/ComponentRender'
 import { makeStyles } from '@material-ui/styles';
 import Head from 'next/head'
 
-import All from '../../components/All'
+import ToggleWorkList from '../../components/ToggleWorkList'
 
 import Prismic from 'prismic-javascript'
 import { RichText } from 'prismic-reactjs'
@@ -18,34 +18,8 @@ const useStyles = makeStyles((props) => {
 	return {
 		mainContent: {
 			padding: '20px',
+			paddingBottom: '100px',
 			maxWidth: 'calc(100% - 100px - 50px)'
-		},
-		menuContent: {
-			position: 'fixed',
-			left: 'calc(100% - 101px)',
-			height: '100%',
-			overflow: 'scroll',
-			width: '100vw',
-			borderLeft: '1px solid #000',
-			top: '0',
-			backgroundColor: '#fff',
-			paddingLeft: '30px'
-		},
-		toggled: {
-			left: '50px'
-		},
-		draggable: {
-			position: 'fixed',
-			top: '50%',
-			left: 'calc(100% - 101px - 10px)',
-			marginTop: 'calc(-42px/2)',
-			background: '#fff',
-			border: '1px solid #000',
-			padding: '10px 5px',
-			cursor: 'pointer'
-		},
-		toggledDraggable: {
-			left: '40px'
 		},
 		desc: {
 			maxWidth: '75%',
@@ -59,12 +33,6 @@ const useStyles = makeStyles((props) => {
 export default function Index(props) {
 
 	const classes = useStyles();
-	
-	const [toggleState, setToggleState] = useState();
-
-	const handleToggle = () => {
-		setToggleState(!toggleState);
-	}
 	
 	function createMarkup(html) {
   		return {__html: html};
@@ -83,15 +51,9 @@ export default function Index(props) {
 					</div>
 					<ComponentRender data={props.data.data.body} />
 				</div>
-				<div className={`${classes.menuContent} ${toggleState ? classes.toggled : null}`}>
-					<div 
-						className={`${classes.draggable} ${toggleState ? classes.toggledDraggable : null}`}
-						onClick={(() => handleToggle())}
-					>⇿</div>
-					<All 
-						data={props.allPosts}
-						hideFeatured />
-				</div>
+				<ToggleWorkList
+					data={props.allPosts} />
+
 			</Layout>
 		</>
 	)

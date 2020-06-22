@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Filters from '../components/Filters';
 import WorkList from '../components/WorkList'
+import usePersistedState from './usePersistedState';
 
 import Featured from '../components/Featured'
 
@@ -34,7 +35,7 @@ const useStyles = makeStyles((props) => {
 export default function All(props) {
 
 	const classes = useStyles();
-    const [filtersList, setFilters] = useState([])
+    const [filtersList, setFilters] = useState([]);
     const [showFeatured, setShowFeatured] = useState(true);
     const [filteredList, setFilteredList] = useState([])
 
@@ -43,7 +44,7 @@ export default function All(props) {
   		return {__html: html};
 	}
 
-	const featured = props.data.filter((item) => {
+	const featured = showFeatured && props && props.data && props.data.filter((item) => {
 		return item.data.featured
 	})
 
@@ -65,7 +66,15 @@ export default function All(props) {
 		} else {
 			setShowFeatured(true)
         }
-    });
+	});
+	
+	useEffect(() => {
+		if(filtersList.length > 0) {
+			filtersList.map((filter) => {
+				toggleShowHide(filter);
+			})
+		}
+	}, [])
 
 
 	return (

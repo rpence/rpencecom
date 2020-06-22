@@ -7,9 +7,16 @@ const useStyles = makeStyles((props) => {
         galleryBlock: {
             display: 'flex',
             maxWidth: '100%',
+            position: 'relative',
 
             '& div': {
                 padding: '10px',
+                width: '100%',
+                '& iframe': {
+                    width: '100%',
+                    height: '100%',
+                    paddingBottom: 'calc(100% - 150px)'
+                },
                 '&:first-of-type': {
                     paddingLeft: 0
                 },
@@ -33,7 +40,9 @@ export default function VideoGallery(props) {
             <div className={classes.galleryBlock}>
                 {props.items.map((item) => {
                     return (
-                        <div dangerouslySetInnerHTML={createMarkup(`${item.video.html}`)} />
+                        <>
+                            <div dangerouslySetInnerHTML={createMarkup(`${item.video.html}`)} />
+                        </>
                     )
                 })}
             </div>

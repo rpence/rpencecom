@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
+import LazyLoad from 'react-lazyload';
 
 const useStyles = makeStyles((props) => {
 	return {
@@ -25,7 +26,12 @@ const useStyles = makeStyles((props) => {
 			}
         },
         featuredImage: {
-            marginBottom: '20px'
+            marginBottom: '20px',
+            transition: 'filter ease .5s',
+
+            '&:hover': {
+                filter: 'invert(1)'
+            }
         },
 		small: {
             fontSize: '.85rem',
@@ -56,11 +62,13 @@ export default function Featured(props) {
                 {props.data.map((item, index) => {
                     return (
                         <div className={classes.blockContainerLink} key={item.uid}>
-                            <Link href={`test/${item.uid}`}>
+                            <Link href={`work/${item.uid}`}>
                                 <a>
                                     <div className={classes.block}>
                                         <div className={classes.featuredImage}>
-                                            <img src={item.data.preview_image.url} />
+                                            <LazyLoad>
+                                                <img src={item.data.preview_image.url} />
+                                            </LazyLoad>
                                         </div>
                                         <div className={classes.title}>
                                             {RichText.asText(item.data.title)}

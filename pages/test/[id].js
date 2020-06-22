@@ -2,58 +2,23 @@ import React, { useState } from 'react';
 import Layout from '../../components/Layout';
 import ComponentRender from '../../components/ComponentRender'
 import { makeStyles } from '@material-ui/styles';
-
-import All from '../../components/All'
-
-import Prismic from 'prismic-javascript'
-import { RichText } from 'prismic-reactjs'
+import dynamic from 'next/dynamic'
 
 
-const apiEndpoint = 'https://ronniepence.cdn.prismic.io/api/v2'
-const accessToken = 'MC5YdFhpTGhBQUFCNEFKNlY4.Tu-_vQ3vv70wBlfvv71zPe-_ve-_ve-_ve-_ve-_ve-_ve-_vXfvv71s77-9LUdhQ0FDbB_vv73vv71t' 
-const Client = Prismic.client(apiEndpoint, { accessToken })
+const Franss99 = dynamic(() => 
+	import('../../components/Franss99'),
+	{ ssr: false }
+)
 
 const useStyles = makeStyles((props) => {
 	return {
-		mainContent: {
-			padding: '20px',
-			maxWidth: 'calc(100% - 100px - 50px)'
-		},
-		menuContent: {
-			position: 'fixed',
-			left: 'calc(100% - 101px)',
-			height: '100%',
-			overflow: 'scroll',
-			width: '100vw',
-			borderLeft: '1px solid #000',
-			top: '0',
-			backgroundColor: '#fff',
-			paddingLeft: '30px'
-		},
-		toggled: {
-			left: '50px'
-		},
-		draggable: {
-			position: 'fixed',
-			top: '50%',
-			left: 'calc(100% - 101px - 10px)',
-			marginTop: 'calc(-42px/2)',
-			background: '#fff',
-			border: '1px solid #000',
-			padding: '10px 5px',
-			cursor: 'pointer'
-		},
-		toggledDraggable: {
-			left: '40px'
-		},
-		desc: {
-			maxWidth: '75%',
-			fontSize: '1.1rem',
-			lineHeight: '1.6',
-			fontFamily: '\'Cotham Sans\'',
+		big: {
+			width: '900px',
+			height: '600px'
 		}
 	}
 })
+
 
 export default function Index(props) {
 
@@ -71,37 +36,11 @@ export default function Index(props) {
 
 	return (
 		<Layout>
-			<div className={classes.mainContent}>
-				{RichText.render(props.data.data.title)}
-				<div className={classes.desc}>
-					{RichText.render(props.data.data.description)}
-				</div>
-				<ComponentRender data={props.data.data.body} />
+			<div className={classes.big}>
+				<Franss99 />
 			</div>
-			<div className={`${classes.menuContent} ${toggleState ? classes.toggled : null}`}>
-				<div 
-					className={`${classes.draggable} ${toggleState ? classes.toggledDraggable : null}`}
-					onClick={(() => handleToggle())}
-				>⇿</div>
-				<All 
-					data={props.allPosts}
-					hideFeatured />
-			</div>
+			
 		</Layout>
 	)
 };
 
-Index.getInitialProps = async function(ctx) {
-	const response = await Client.query(
-		Prismic.Predicates.at('my.page.uid', ctx.query.id)
-	)
-	const data =  await response.results;
-
-	const postResponse = await Client.query(
-		Prismic.Predicates.at('document.type', 'page'),
-		{ pageSize : 100 }
-	)
-	const allPosts =  await postResponse.results;
-
-	return {data: data[0], allPosts: allPosts};
-};

@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
-import { linkResolver } from './util'
 
 const useStyles = makeStyles((props) => {
 	return {
@@ -69,7 +68,8 @@ const useStyles = makeStyles((props) => {
         },
         title: {
             fontFamily: '\'Cotham Sans\'',
-            margin: '5px 0'
+            margin: '5px 0',
+            fontWeight: '900'
         },
         strong: {
             marginBottom: '20px',
@@ -81,7 +81,9 @@ const useStyles = makeStyles((props) => {
             left: '60%',
             transform: 'translate(0, -50%)',
             zIndex: 0,
-            width: '500px'
+            width: 'auto',
+            maxWidth: '500px',
+            maxHeight: '80%'
         }
     }
 })

@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
+import LazyLoad from 'react-lazyload';
 
 
 const useStyles = makeStyles((props) => {
@@ -31,7 +32,9 @@ export default function Gallery(props) {
                 {props.items.map((item) => {
                     return (
                         <div>
-                            <img src={item.image.url} />
+                            <LazyLoad>
+                                <img src={item.image.url} />
+                            </LazyLoad>
                         </div>
                     )
                 })}
