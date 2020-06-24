@@ -42,7 +42,7 @@ export default function Layout(props) {
                     <Header />
                     {props.children}
                     <Marquee dir="ltr">
-                        &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;BLM&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; <Music />
+                        <Music />
                     </Marquee>
                 </main>
             </ThemeProvider>

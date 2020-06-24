@@ -24,6 +24,10 @@ const useStyles = makeStyles((props) => {
             '& span': {
                 whiteSpace: 'nowrap',
             }
+        },
+        minWidth: {
+            display: 'inline-block',
+            minWidth: '150vw'
         }
     }
 });
@@ -84,7 +88,7 @@ const Marquee = (props) => {
     },[]);
 
     const Child = () => (
-        <span>
+        <span className={classes.minWidth}>
             {props.children}
         </span>
     );

@@ -18,10 +18,6 @@ export default function Music(props) {
     return (
         <>
             &nbsp;&nbsp;&nbsp;&nbsp; ♫ {tracks && tracks.recenttracks && tracks.recenttracks.track[0].name} — {tracks && tracks.recenttracks && tracks.recenttracks.track[0].artist['#text']} ♫ &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; 
-            ♫ {tracks && tracks.recenttracks && tracks.recenttracks.track[0].name} — {tracks && tracks.recenttracks && tracks.recenttracks.track[0].artist['#text']} ♫ &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; 
-            ♫ {tracks && tracks.recenttracks && tracks.recenttracks.track[0].name} — {tracks && tracks.recenttracks && tracks.recenttracks.track[0].artist['#text']} ♫ &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; 
-			♫ {tracks && tracks.recenttracks && tracks.recenttracks.track[0].name} — {tracks && tracks.recenttracks && tracks.recenttracks.track[0].artist['#text']} ♫ &nbsp;&nbsp;&nbsp;&nbsp;
-
         </>
     )
 }
