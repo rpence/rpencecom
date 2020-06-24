@@ -42,6 +42,11 @@ export default function Index(props) {
 		<>
 			<Head>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+				<title>{RichText.asText(props.data.data.title)} | Ronnie Pence</title>
+				<meta name="description" content={RichText.asText(props.data.data.description)} />
+				<meta property="og:title" content={RichText.asText(props.data.data.title)} />
+				<meta property="og:description" content={RichText.asText(props.data.data.description)} />
+				<meta property="og:image" content={props.data.data.preview_image.url} />
 			</Head>
 			<Layout>
 				<div className={classes.mainContent}>

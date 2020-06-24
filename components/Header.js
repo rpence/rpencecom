@@ -16,24 +16,42 @@ const useStyles = makeStyles((props) => {
 		header: {
 			display: 'flex',
 			height: '150px',
-			borderBottom: '1px solid #000'
+			borderBottom: '1px solid #000',
+
+			'@media only screen and (max-width: 600px)': {
+				flexDirection: 'row',
+				borderBottom: 0
+			}
 		},
 		logo: {
 			flexShrink: 0,
-			flexBasis: '400px'
+			flexBasis: '400px',
+
+			'@media only screen and (max-width: 600px)': {
+				flexBasis: '100%'
+			}
+
 		},
 		x: {
 			flexGrow: 0,
 			flexBasis: '100px',
 			flexShrink: 0,
-			maxWidth: '100px'
+			maxWidth: '100px',
+
+			'@media only screen and (max-width: 600px)': {
+				display: 'none'
+			}
 		},
 		desc: {
             fontSize: '.85rem',
             lineHeight: 1.6,
             letterSpacing: '.5px',
             padding: '20px',
-            fontFamily: '\'Cotham Sans\'',
+			fontFamily: '\'Cotham Sans\'',
+
+			'@media only screen and (max-width: 600px)': {
+				display: 'none'
+			}
 		},
 		descContainer: {
 			flexGrow: 1,
@@ -44,6 +62,10 @@ const useStyles = makeStyles((props) => {
 			flexBasis: '300px',
 			borderRight: '1px solid #000',
 			borderLeft: '1px solid #000',
+
+			'@media only screen and (max-width: 600px)': {
+				display: 'none'
+			},
 
 			'& ul': {
 				listStyle: 'none',
@@ -93,7 +115,7 @@ export default function Header(props) {
                     </Link>
                 </div>
                 <div className={classes.descContainer}>
-                    {Object.keys(router.query).length === 0 ? <p className={classes.desc}>As a creative developer with a background in design, I’m interested in highlighting the creative component of technology to enhance people’s understanding of both. I combine technology with thoughtful design to create immersive digital experiences that drive a compelling narrative and often take on a physical dimension.</p> : <X includeText />}
+                    {Object.keys(router.query).length === 0 ? <p className={classes.desc}>I am an artist and creative technologist and artist exploring at the intersection of technology and design... </p> : <X includeText />}
                 </div>
                 <div className={classes.nav}>
                     <ul>
