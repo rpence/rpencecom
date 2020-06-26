@@ -122,6 +122,11 @@ export default function WorkList(props) {
         setImage(url);
     }
     
+    const posts = props.data.filter( (data) => {
+        return !data.data.locked 
+    })
+
+
     return (
         <> 
             <strong className={classes.strong}>// Archive </strong>
@@ -151,11 +156,11 @@ export default function WorkList(props) {
                 </a>
             </div>
 
-            {props.data.length > 0 ? (
+            {posts.length > 0 ? (
                 <>
                     {setImage && <img src={image} className={classes.hoverImg} />}
 
-                    {props.data.map((item, index) => {
+                    {posts.map((item, index) => {
 
                         const filters = item.data.body.filter( (item, index) => {
                             return item.slice_type === 'tags'

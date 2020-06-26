@@ -119,7 +119,7 @@ export default function Header(props) {
                     </Link>
                 </div>
                 <div className={classes.descContainer}>
-                    {Object.keys(router.query).length === 0 ? <p className={classes.desc}>I am an artist and creative technologist and artist exploring at the intersection of technology and design... </p> : <X includeText />}
+                    {Object.keys(router.query).length === 0 ? <p className={classes.desc}>As a creative developer with a background in design, I’m interested in highlighting the creative component of technology to enhance people’s understanding of both. I combine technology with thoughtful design to create immersive digital experiences that drive a compelling narrative and often take on a physical dimension.</p> : <X includeText />}
                 </div>
                 <div className={classes.nav}>
                     <ul>
