@@ -12,7 +12,7 @@ const useStyles = makeStyles((props) => {
 		blockContainer: {
 			marginBottom: '50px',
 			padding: '20px',
-			width: '1100px'
+			maxWidth: '1100px'
 		},
 		block: {
 			padding: '10px 0 20px',

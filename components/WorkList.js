@@ -28,30 +28,54 @@ const useStyles = makeStyles((props) => {
                 display: 'flex',
                 justifyContent: 'stretch',
 
+                '@media only screen and (max-width: 600px)': {
+                    flexDirection: 'column'
+                },
+
                 '& > div:first-of-type': {
                     width: '50%',
                     flexBasis: '50%',
                     flexGrow: 0,
-                    flexShrink: 0
+                    flexShrink: 0,
+
+                    '@media only screen and (max-width: 600px)': {
+                        width: '100%',
+                        flexBasis: '100%',
+                    }
                 },
                 '& > div:nth-of-type(2)': {
                     width: '15%',
                     flexBasis: '15%',
                     flexGrow: 0,
                     flexShrink: 0,
-                    paddingLeft: '60px'
+                    paddingLeft: '60px',
+                    '@media only screen and (max-width: 600px)': {
+                        width: '100%',
+                        flexBasis: '100%',
+                        paddingLeft: 0
+                    }
                 },
                 '& > div:nth-of-type(3)': {
                     textAlign: 'left',
                     flexGrow: 1,
-                    paddingLeft: '30px'
+                    paddingLeft: '30px',
+                    '@media only screen and (max-width: 600px)': {
+                        width: '100%',
+                        flexBasis: '100%',
+                        paddingLeft: 0
+                    }
                 },
                 '& > div:last-of-type': {
                     width: '8%',
                     flexBasis: '8%',
                     flexGrow: 0,
                     flexShrink: 0,
-                    textAlign: 'right'
+                    textAlign: 'right',
+                    '@media only screen and (max-width: 600px)': {
+                        width: '100%',
+                        flexBasis: '100%',
+                        textAlign: 'left'
+                    }
                 },
             }
 		},

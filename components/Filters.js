@@ -7,7 +7,11 @@ const useStyles = makeStyles((props) => {
 	return {
         filters: {
             margin: '30px 0',
-            display: 'flex',  
+            display: 'flex', 
+
+            '@media only screen and (max-width: 600px)': {
+                flexDirection: 'column'
+            },
 
             '& > div': {
                 minWidth: '23%'

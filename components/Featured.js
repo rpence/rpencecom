@@ -9,6 +9,10 @@ const useStyles = makeStyles((props) => {
         featuredBlock: {
             display: 'flex',
             margin: '0 -15px 50px',
+
+            '@media only screen and (max-width: 600px)': {
+                flexDirection: 'column'
+            }
         },
 		block: {
 			padding: '10px 0 20px',
