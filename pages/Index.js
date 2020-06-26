@@ -47,6 +47,7 @@ export default function Index(props) {
 	return (
 		<>
 			<Head>
+				<title>Ronnie Pence · Creative Technologist</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<Layout>
