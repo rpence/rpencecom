@@ -23,7 +23,16 @@ const useStyles = makeStyles((props) => {
 			top: '0',
 			backgroundColor: '#fff',
             paddingLeft: '30px',
-            paddingBottom: '250px'
+			paddingBottom: '250px',
+
+			'@media only screen and (max-width: 600px)': {
+				position: 'static',
+				top: 'auto',
+				left: 'auto',
+				height: 'auto',
+				padding: 0,
+				paddingBottom: '50px'
+			}
 		},
 		toggled: {
 			left: '50px'
@@ -36,7 +45,11 @@ const useStyles = makeStyles((props) => {
 			background: '#fff',
 			border: '1px solid #000',
 			padding: '10px 5px',
-			cursor: 'pointer'
+			cursor: 'pointer',
+
+			'@media only screen and (max-width: 600px)': {
+				display: 'none'
+			}
 		},
 		toggledDraggable: {
 			left: '40px'

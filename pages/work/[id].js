@@ -19,13 +19,21 @@ const useStyles = makeStyles((props) => {
 		mainContent: {
 			padding: '20px',
 			paddingBottom: '100px',
-			maxWidth: 'calc(100% - 100px - 50px)'
+			maxWidth: 'calc(100% - 100px - 50px)',
+
+			'@media only screen and (max-width: 600px)': {
+				maxWidth: 'none'
+			}
 		},
 		desc: {
 			maxWidth: '75%',
 			fontSize: '1.1rem',
 			lineHeight: '1.6',
 			fontFamily: '\'Cotham Sans\'',
+
+			'@media only screen and (max-width: 600px)': {
+				maxWidth: 'none'
+			}
 		}
 	}
 })

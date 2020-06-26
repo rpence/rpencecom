@@ -55,7 +55,11 @@ const useStyles = makeStyles((props) => {
 		},
 		descContainer: {
 			flexGrow: 1,
-			flexBasis: 'calc(100% - 300px -300px - 100px)'
+			flexBasis: 'calc(100% - 300px -300px - 100px)',
+
+			'@media only screen and (max-width: 600px)': {
+				display: 'none'
+			}
 		},
 		nav: {
 			flexShrink: 0,
