@@ -1,0 +1,140 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div class="poster">
+    <canvas id="c"></canvas>
+    <div class="text">UN FILM DE JAN KOUNEN</div>
+    </div>
+<script type="module">
+// Three.js - Load .OBJ ?
+// from https://threejsfundamentals.org/threejs/threejs-load-obj-no-materials.html
+
+
+import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/build/three.module.js';
+import {OrbitControls} from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/examples/jsm/controls/OrbitControls.js';
+import {OBJLoader2} from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/examples/jsm/loaders/OBJLoader2.js';
+
+function main() {
+  const canvas = document.querySelector('#c');
+  const renderer = new THREE.WebGLRenderer({canvas, alpha: true, antialias: true});
+  renderer.setClearColor(0xFFFFFF, 0 );
+
+
+  const fov = 45;
+  const aspect = 2;  // the canvas default
+  const near = 0.1;
+  const far = 1000;
+  const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+  camera.position.set(95.42466470284158,  216.36109152053933,  69.65584779840641);
+  camera.zoom = .9
+
+  const controls = new OrbitControls(camera, canvas);
+  controls.target.set(0, 5, 0);
+  controls.update();
+  
+  const scene = new THREE.Scene();
+  //scene.background = new THREE.Color('black');
+
+  
+
+  {
+    const skyColor = 0x999999;  // light blue
+    const groundColor = 0x999999;  // brownish orange
+    const intensity = .1;
+    const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
+    scene.add(light);
+  }
+
+  {
+    const color = 0x000000;
+    const intensity = .1;
+    const light = new THREE.DirectionalLight(color, intensity);
+    light.position.set(0, 10, 0);
+    light.target.position.set(-5, 0, 0);
+    scene.add(light);
+    scene.add(light.target);
+  }
+
+  {
+    const objLoader = new OBJLoader2();
+    objLoader.load('./dna6.obj', (root) => {
+      scene.add(root);
+    });
+  }
+  
+ 
+  
+
+  function resizeRendererToDisplaySize(renderer) {
+    const canvas = renderer.domElement;
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
+    const needResize = canvas.width !== width || canvas.height !== height;
+    if (needResize) {
+      renderer.setSize(width, height, false);
+    }
+    return needResize;
+  }
+
+  function render() {
+
+    if (resizeRendererToDisplaySize(renderer)) {
+      const canvas = renderer.domElement;
+      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.updateProjectionMatrix();
+    }
+
+    scene.rotation.z += .025;
+    camera.rotation.y = 0.32565752195935416;
+    camera.rotation.x = -1.3098113683466999;
+    camera.rotation.z = 0.8751978932552336;
+    
+    //console.log(camera.position)
+
+
+    renderer.render(scene, camera);
+
+    requestAnimationFrame(render);
+  }
+
+  requestAnimationFrame(render);
+}
+
+main();
+</script>
+<link rel="stylesheet" href="https://use.typekit.net/elr1xkz.css">
+
+
+<style>
+html, body {
+  margin: 0;
+  height: 100%;
+  background-color: #fff000
+}
+.poster {
+  margin: 10px auto;
+  position: relative;
+  overflow: hidden;
+  width: 360px;
+  padding-bottom: calc(360px / 27 * 40);
+  border: 1px solid #000;
+}
+#c {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.text {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: aktiv-grotesk, sans-serif;
+
+font-weight: 800;
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}</style>
