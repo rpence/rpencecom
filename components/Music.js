@@ -53,7 +53,7 @@ export default function Music(props) {
 
     return (
         <>
-			&nbsp;&nbsp;&nbsp;&nbsp; ♫ {trackName} — {trackArtist} <span className={classes.lighten}>{listeningNow ? 'Playing Now' : null}</span> <span className={classes.lighten}>{!listeningNow && lastPlayed}</span> ♫ &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; 
+			&nbsp;&nbsp;&nbsp;&nbsp; This website is a work in progress &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; BLM &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; ♫ {trackName} — {trackArtist} <span className={classes.lighten}>{listeningNow ? 'Playing Now' : null}</span> <span className={classes.lighten}>{!listeningNow && lastPlayed}</span> ♫ &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; This website is a work in progress &nbsp;&nbsp;&nbsp;&nbsp;· &nbsp;&nbsp;&nbsp;&nbsp;BLM&nbsp;&nbsp;&nbsp;&nbsp;· &nbsp;&nbsp;&nbsp;&nbsp; HAPPY PRIDE &nbsp;&nbsp;&nbsp;&nbsp; · &nbsp;&nbsp;&nbsp;&nbsp;
         </>
     )
 }
