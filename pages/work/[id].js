@@ -55,6 +55,7 @@ export default function Index(props) {
 				<meta property="og:title" content={RichText.asText(props.data.data.title)} />
 				<meta property="og:description" content={RichText.asText(props.data.data.description)} />
 				<meta property="og:image" content={props.data.data.preview_image.url} />
+				<link rel="icon" type="image/png" href="/static/logo-dark.png"></link>
 			</Head>
 			<Layout>
 				<div className={classes.mainContent}>

@@ -49,7 +49,7 @@ export default function Index(props) {
 			<Head>
 				<title>Ronnie Pence · Creative Technologist</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
-				<link rel="icon" type="image/png" href="/static/img/logo-dark.png"></link>
+				<link rel="icon" type="image/png" href="/static/logo-dark.png"></link>
 			</Head>
 			<Layout>
 				<div className={classes.blockContainer}>
