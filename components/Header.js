@@ -46,8 +46,14 @@ const useStyles = makeStyles((props) => {
             fontSize: '.85rem',
             lineHeight: 1.6,
             letterSpacing: '.5px',
-            padding: '20px',
 			fontFamily: '\'Cotham Sans\'',
+			overflow: 'hidden',
+			textOverflow: 'ellipsis',
+			display: '-webkit-box',
+			lineClamp: 4,
+			boxOrient: 'vertical',
+			'-webkit-line-clamp': 4,
+			'-webkit-box-orient': 'vertical',
 
 			'@media only screen and (max-width: 600px)': {
 				display: 'none'
@@ -56,6 +62,7 @@ const useStyles = makeStyles((props) => {
 		descContainer: {
 			flexGrow: 1,
 			flexBasis: 'calc(100% - 300px -300px - 100px)',
+			padding: '20px',
 
 			'@media only screen and (max-width: 600px)': {
 				display: 'none'
