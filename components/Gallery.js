@@ -9,8 +9,20 @@ const useStyles = makeStyles((props) => {
             display: 'flex',
             maxWidth: '100%',
 
+            '@media only screen and (max-width: 768px)': {
+                flexBasis: '100%',
+                width: '100%',
+                flexShrink: 0,
+                flexDirection: 'column'
+			},
+
             '& div': {
                 padding: '10px',
+
+                '@media only screen and (max-width: 768px)': {
+                    padding: '20px 0'
+                },
+
                 '&:first-of-type': {
                     paddingLeft: 0
                 },

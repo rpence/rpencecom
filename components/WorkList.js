@@ -108,6 +108,11 @@ const useStyles = makeStyles((props) => {
             width: 'auto',
             maxWidth: '500px',
             maxHeight: '80%'
+        },
+        blockContainerHeader: {
+            '@media only screen and (max-width: 768px)': {
+				display: 'none'
+			}
         }
     }
 })
@@ -131,7 +136,7 @@ export default function WorkList(props) {
         <> 
             <strong className={classes.strong}>// Archive </strong>
 
-            <div className={classes.blockContainerLink}>
+            <div className={`${classes.blockContainerLink} ${classes.blockContainerHeader}`}>
                 <a>
                     <div className={classes.block_sm}>
                         <span className={classes.small}>

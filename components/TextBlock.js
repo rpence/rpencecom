@@ -9,11 +9,22 @@ const useStyles = makeStyles((props) => {
             display: 'flex',
             maxWidth: '100%',
 
+            '@media only screen and (max-width: 768px)': {
+                flexDirection: 'column'
+            },
+
+
             '& > div': {
                 padding: '10px',
                 flexBasis: 0,
                 flexGrow: 1,
                 maxWidth: '66%',
+
+                '@media only screen and (max-width: 768px)': {
+                    maxWidth: '100%',
+                },
+
+
 
                 '&:first-of-type': {
                     paddingLeft: 0

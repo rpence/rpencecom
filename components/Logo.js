@@ -9,7 +9,7 @@ export default function Logo(props) {
 	}
 
 	const setup = (p5, canvasParentRef) => {
-		p5.createCanvas(canvasParentRef.clientWidth, canvasParentRef.clientWidth / 2.65, p5.WEBGL).parent(canvasParentRef)
+		p5.createCanvas(canvasParentRef.clientWidth, canvasParentRef.clientHeight, p5.WEBGL).parent(canvasParentRef)
 	};
 
 

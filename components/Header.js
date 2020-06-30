@@ -27,6 +27,20 @@ const useStyles = makeStyles((props) => {
 			flexShrink: 0,
 			flexBasis: '400px',
 
+			'& a': {
+				display: 'block',
+				height: '100%'
+			},
+
+			'& .react-p5': {
+				display: 'block',
+				height: '100%'
+			},
+
+			'@media only screen and (max-width: 1024px)': {
+				flexBasis: '300px'
+			},
+
 			'@media only screen and (max-width: 768px)': {
 				flexBasis: '100%'
 			}
@@ -38,7 +52,7 @@ const useStyles = makeStyles((props) => {
 			flexShrink: 0,
 			maxWidth: '100px',
 
-			'@media only screen and (max-width: 768px)': {
+			'@media only screen and (max-width: 1024px)': {
 				display: 'none'
 			}
 		},
@@ -73,6 +87,10 @@ const useStyles = makeStyles((props) => {
 			flexBasis: '300px',
 			borderRight: '1px solid #000',
 			borderLeft: '1px solid #000',
+
+			'@media only screen and (max-width: 1024px)': {
+				flexBasis: '200px'
+			},
 
 			'@media only screen and (max-width: 768px)': {
 				display: 'none'
