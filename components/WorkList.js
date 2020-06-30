@@ -28,7 +28,7 @@ const useStyles = makeStyles((props) => {
                 display: 'flex',
                 justifyContent: 'stretch',
 
-                '@media only screen and (max-width: 600px)': {
+                '@media only screen and (max-width: 768px)': {
                     flexDirection: 'column'
                 },
 
@@ -38,7 +38,7 @@ const useStyles = makeStyles((props) => {
                     flexGrow: 0,
                     flexShrink: 0,
 
-                    '@media only screen and (max-width: 600px)': {
+                    '@media only screen and (max-width: 768px)': {
                         width: '100%',
                         flexBasis: '100%',
                     }
@@ -49,7 +49,7 @@ const useStyles = makeStyles((props) => {
                     flexGrow: 0,
                     flexShrink: 0,
                     paddingLeft: '60px',
-                    '@media only screen and (max-width: 600px)': {
+                    '@media only screen and (max-width: 768px)': {
                         width: '100%',
                         flexBasis: '100%',
                         paddingLeft: 0
@@ -59,7 +59,7 @@ const useStyles = makeStyles((props) => {
                     textAlign: 'left',
                     flexGrow: 1,
                     paddingLeft: '30px',
-                    '@media only screen and (max-width: 600px)': {
+                    '@media only screen and (max-width: 768px)': {
                         width: '100%',
                         flexBasis: '100%',
                         paddingLeft: 0
@@ -71,7 +71,7 @@ const useStyles = makeStyles((props) => {
                     flexGrow: 0,
                     flexShrink: 0,
                     textAlign: 'right',
-                    '@media only screen and (max-width: 600px)': {
+                    '@media only screen and (max-width: 768px)': {
                         width: '100%',
                         flexBasis: '100%',
                         textAlign: 'left'

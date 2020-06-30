@@ -18,7 +18,7 @@ const useStyles = makeStyles((props) => {
 			height: '150px',
 			borderBottom: '1px solid #000',
 
-			'@media only screen and (max-width: 600px)': {
+			'@media only screen and (max-width: 768px)': {
 				flexDirection: 'row',
 				borderBottom: 0
 			}
@@ -27,7 +27,7 @@ const useStyles = makeStyles((props) => {
 			flexShrink: 0,
 			flexBasis: '400px',
 
-			'@media only screen and (max-width: 600px)': {
+			'@media only screen and (max-width: 768px)': {
 				flexBasis: '100%'
 			}
 
@@ -38,7 +38,7 @@ const useStyles = makeStyles((props) => {
 			flexShrink: 0,
 			maxWidth: '100px',
 
-			'@media only screen and (max-width: 600px)': {
+			'@media only screen and (max-width: 768px)': {
 				display: 'none'
 			}
 		},
@@ -55,7 +55,7 @@ const useStyles = makeStyles((props) => {
 			'-webkit-line-clamp': 4,
 			'-webkit-box-orient': 'vertical',
 
-			'@media only screen and (max-width: 600px)': {
+			'@media only screen and (max-width: 768px)': {
 				display: 'none'
 			}
 		},
@@ -64,7 +64,7 @@ const useStyles = makeStyles((props) => {
 			flexBasis: 'calc(100% - 300px -300px - 100px)',
 			padding: '20px',
 
-			'@media only screen and (max-width: 600px)': {
+			'@media only screen and (max-width: 768px)': {
 				display: 'none'
 			}
 		},
@@ -74,7 +74,7 @@ const useStyles = makeStyles((props) => {
 			borderRight: '1px solid #000',
 			borderLeft: '1px solid #000',
 
-			'@media only screen and (max-width: 600px)': {
+			'@media only screen and (max-width: 768px)': {
 				display: 'none'
 			},
 

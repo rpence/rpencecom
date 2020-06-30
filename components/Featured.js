@@ -10,7 +10,7 @@ const useStyles = makeStyles((props) => {
             display: 'flex',
             margin: '0 -15px 50px',
 
-            '@media only screen and (max-width: 600px)': {
+            '@media only screen and (max-width: 768px)': {
                 flexDirection: 'column'
             }
         },
