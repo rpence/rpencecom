@@ -20,7 +20,7 @@ const useStyles = makeStyles((props) => {
                 padding: '10px',
 
                 '@media only screen and (max-width: 768px)': {
-                    padding: '20px 0'
+                    padding: '10px 0'
                 },
 
                 '&:first-of-type': {
