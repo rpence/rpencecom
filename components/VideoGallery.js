@@ -9,13 +9,39 @@ const useStyles = makeStyles((props) => {
             maxWidth: '100%',
             position: 'relative',
 
+            '@media only screen and (max-width: 768px)': {
+                flexDirection: 'column',
+                flexGrow: 1,
+                flexShrink: 0,
+                width: '100%',
+                flexBasis: '100%'
+            },
+
             '& div': {
                 padding: '10px',
                 width: '100%',
+                '@media only screen and (max-width: 768px)': {
+                    width: '100%',
+                    flexShrink: 0,
+                    padding: 0
+                },
                 '& iframe': {
                     width: '100%',
                     height: '100%',
-                    paddingBottom: 'calc(100% - 150px)'
+                    paddingBottom: 'calc(100% - 150px)',
+                    
+                    '@media only screen and (max-width: 768px)': {
+                        width: 'calc(100vw - 40px)',
+                        height: 'calc(100vw - 40px)',
+                        paddingBottom: 0,
+                        flexShrink: 0,
+                        marginBottom: '20px',
+
+                        '&:last-of-type': {
+                            marginBottom: '15px'
+                        }
+                    },
+                    
                 },
                 '&:first-of-type': {
                     paddingLeft: 0
