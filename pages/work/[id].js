@@ -65,6 +65,7 @@ export default function Index(props) {
 					</div>
 					<ComponentRender data={props.data.data.body} />
 				</div>
+				<hr />
 				<ToggleWorkList
 					data={props.allPosts} />
 

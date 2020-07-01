@@ -32,7 +32,8 @@ const useStyles = makeStyles((props) => {
 				height: 'auto',
 				padding: '25px',
 				paddingBottom: '50px',
-				boxSizing: 'border-box'
+				boxSizing: 'border-box',
+				borderLeft: 0
 			}
 		},
 		toggled: {
