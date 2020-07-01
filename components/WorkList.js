@@ -99,7 +99,8 @@ const useStyles = makeStyles((props) => {
         desc: {
             fontSize: '.85rem',
             fontFamily: '\'Cotham Sans\'',
-            letterSpacing: '.8px'
+            letterSpacing: '.8px',
+            lineHeight: 1.6,
         },
         title: {
             fontFamily: '\'Cotham Sans\'',
@@ -199,7 +200,7 @@ export default function WorkList(props) {
                                                 <div className={classes.title}>
                                                     {RichText.asText(item.data.title)}
                                                 </div>
-                                                <span className={classes.desc}>{item.data.short_description}</span>
+                                                <span className={classes.desc}><p>{item.data.short_description}</p></span>
                                             </div>
                                         </div>
                                         <div className={classes.block}>
