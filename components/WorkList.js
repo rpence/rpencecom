@@ -6,7 +6,11 @@ import { RichText } from 'prismic-reactjs'
 const useStyles = makeStyles((props) => {
 	return {
 		block: {
-			padding: '10px 0 20px',
+            padding: '10px 0 20px',
+            '@media only screen and (max-width: 768px)': {
+                padding: '0 0',
+                lineHeight: '2'
+            }
         },
         block_sm: {
             padding: '10px 0 10px',
@@ -21,6 +25,10 @@ const useStyles = makeStyles((props) => {
             color: '#000',
             position: 'relative',
             zIndex: 1,
+
+            '@media only screen and (max-width: 768px)': {
+                paddingBottom: '10px'
+            },
 
 			'& a': {
 				textDecoration: 'none',
@@ -83,7 +91,10 @@ const useStyles = makeStyles((props) => {
             fontSize: '.7rem',
             marginTop: '10px',
             display: 'block',
-            textTransform: 'uppercase'
+            textTransform: 'uppercase',
+            '@media only screen and (max-width: 768px)': {
+                margin: 0
+            }
         },
         desc: {
             fontSize: '.85rem',
@@ -93,7 +104,13 @@ const useStyles = makeStyles((props) => {
         title: {
             fontFamily: '\'Cotham Sans\'',
             margin: '5px 0',
-            fontWeight: '900'
+            fontWeight: '900',
+
+            '@media only screen and (max-width: 768px)': {
+                margin: '15px 0 0',
+                lineHeight: 1,
+            },
+
         },
         strong: {
             marginBottom: '20px',
