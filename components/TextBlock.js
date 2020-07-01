@@ -13,6 +13,10 @@ const useStyles = makeStyles((props) => {
                 flexDirection: 'column'
             },
 
+            '& li': {
+                marginBottom: '10px'
+            },
+
 
             '& > div': {
                 padding: '10px',
