@@ -46,6 +46,7 @@ const useStyles = makeStyles((props) => {
         },
         title: {
             fontFamily: '\'Cotham Sans\'',
+            fontSize: '26px'
         },
         strong: {
             display: 'block',
