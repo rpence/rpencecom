@@ -1,7 +1,7 @@
  import React from 'react';
  import { useEffect } from 'react';
  import { useRef } from 'react';
- import { makeStyles, mergeClasses } from '@material-ui/styles';
+ import { makeStyles } from '@material-ui/styles';
 
 const translateYCSS = numPx => {
     return `translateY(${numPx}px)`;
@@ -17,8 +17,8 @@ const useStyles = makeStyles((props) => {
             bottom: 0,
             left: 0,
             minWidth: '100%',
-            backgroundColor: '#000',
-            color: '#FFF',
+            backgroundColor: '#1122ff',
+            color: '#0ff53d',
             zIndex: 3,
 
             '& span': {
