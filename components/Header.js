@@ -76,11 +76,13 @@ const useStyles = makeStyles((props) => {
 		descContainer: {
 			flexGrow: 1,
 			flexBasis: 'calc(100% - 300px -300px - 100px)',
-			padding: '20px',
 
 			'@media only screen and (max-width: 768px)': {
 				display: 'none'
 			}
+		},
+		descContainerText: {
+			padding: '20px'
 		},
 		nav: {
 			flexShrink: 0,
@@ -144,7 +146,7 @@ export default function Header(props) {
                     </Link>
                 </div>
                 <div className={classes.descContainer}>
-                    {Object.keys(router.query).length === 0 ? <p className={classes.desc}>As a creative developer with a background in design, I’m interested in highlighting the creative component of technology to enhance people’s understanding of both. I combine technology with thoughtful design to create immersive digital experiences that drive a compelling narrative and often take on a physical dimension.</p> : <X includeText />}
+                    {Object.keys(router.query).length === 0 ? <div className={classes.descContainerText}><p className={classes.desc}>As a creative developer with a background in design, I’m interested in highlighting the creative component of technology to enhance people’s understanding of both. I combine technology with thoughtful design to create immersive digital experiences that drive a compelling narrative and often take on a physical dimension.</p></div> : <X includeText />}
                 </div>
                 <div className={classes.nav}>
                     <ul>
