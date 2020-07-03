@@ -34,9 +34,6 @@ export default function Layout(props) {
     return (
         <>
             <CssBaseline />
-            <Head>
-                <meta charSet="UTF-8" />
-            </Head>
             <ThemeProvider theme={theme}>
                 <main>
                     <Header />

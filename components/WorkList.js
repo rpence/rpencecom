@@ -103,7 +103,7 @@ const useStyles = makeStyles((props) => {
             lineHeight: 1.6,
         },
         title: {
-            fontFamily: '\'Cotham Sans\'',
+            fontFamily: '\'Monument Extended\'',
             margin: '5px 0',
             fontWeight: '900',
             fontSize: '26px',

@@ -3,6 +3,7 @@ import Embed from '../components/Embed';
 import Gallery from '../components/Gallery';
 import VideoGallery from '../components/VideoGallery';
 import TextBlock from '../components/TextBlock';
+import ImageVideo from '../components/ImageVideo';
 
 export default function ComponentRender(props) {
 
@@ -18,6 +19,8 @@ export default function ComponentRender(props) {
                     return Embed(props)
                 case 'text_block':
                     return TextBlock(props)
+                case 'image___video':
+                    return ImageVideo(props)
                 default:
                     return null;
                 }

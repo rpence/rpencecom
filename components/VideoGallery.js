@@ -19,7 +19,6 @@ const useStyles = makeStyles((props) => {
         videoContainer: {
             padding: '10px',
 
-
             '@media only screen and (max-width: 768px)': {
                 padding: '10px 0'
             },
