@@ -83,6 +83,7 @@ export default function All(props) {
                 filterToggle={((uid) => toggleShowHide(uid))}		
             />
             {showFeatured && !props.hideFeatured && <Featured data={featured} />}
+			<a name="work"></a>
             <WorkList data={filteredList.length > 0 || filtersList.length > 0 ? filteredList : props.data} />
 		</>
 	)
