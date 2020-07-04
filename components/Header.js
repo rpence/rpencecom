@@ -146,7 +146,7 @@ export default function Header(props) {
                     </Link>
                 </div>
                 <div className={classes.descContainer}>
-                    {Object.keys(router.query).length === 0 ? <div className={classes.descContainerText}><p className={classes.desc}>As a creative developer with a background in design, I’m interested in highlighting the creative component of technology to enhance people’s understanding of both. I combine technology with thoughtful design to create immersive digital experiences that drive a compelling narrative and often take on a physical dimension.</p></div> : <X includeText />}
+                    {Object.keys(router.query).length === 0 ? <div className={classes.descContainerText}><p className={classes.desc}>I am Ronnie Pence, a New York based artist and creative technologist combining data, machine learning, and other technologies with thoughtful design to create multisensory experiences that drive compelling narratives through digital screens and beyond.</p></div> : <X includeText />}
                 </div>
                 <div className={classes.nav}>
                     <ul>
