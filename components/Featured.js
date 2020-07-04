@@ -26,7 +26,10 @@ const useStyles = makeStyles((props) => {
 
 			'& a': {
 				textDecoration: 'none',
-				color: '#000',
+                color: '#000',
+                '&:hover': {
+					color: '#000',
+				},
 			}
         },
         featuredImage: {

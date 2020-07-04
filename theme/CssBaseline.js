@@ -35,6 +35,14 @@ const useStyles = makeStyles(() => {
 				fontFamily: '\'DM Mono\'',
 				height: '100%',
 			},
+			'a': {
+				color: '#2211ff',
+				textDecoration: 'none',
+
+				'&:hover': {
+					color: '#0ff53d',
+				}
+			},
 			'h1': {
 				fontSize: '26px',
 				fontFamily: '\'Monument Extended\'',

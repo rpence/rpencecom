@@ -120,7 +120,11 @@ const useStyles = makeStyles((props) => {
 					'& a': {
 						color: '#000',
 						padding: '20px',
-						textDecoration: 'none'
+						textDecoration: 'none',
+
+						'&:hover': {
+							color: '#0ff53d',
+						}
 					},
 
 					'&:last-of-type': {

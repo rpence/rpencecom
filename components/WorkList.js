@@ -36,6 +36,11 @@ const useStyles = makeStyles((props) => {
                 display: 'flex',
                 justifyContent: 'stretch',
 
+
+				'&:hover': {
+					color: '#000',
+				},
+
                 '@media only screen and (max-width: 768px)': {
                     flexDirection: 'column'
                 },
