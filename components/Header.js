@@ -146,12 +146,13 @@ export default function Header(props) {
                     </Link>
                 </div>
                 <div className={classes.descContainer}>
-                    {Object.keys(router.query).length === 0 ? <div className={classes.descContainerText}><p className={classes.desc}>I am Ronnie Pence, a New York based artist and creative technologist combining data, machine learning, and other technologies with thoughtful design to create multisensory experiences that drive compelling narratives through digital screens and beyond.</p></div> : <X includeText />}
+                    {router.pathname === '/' ? <div className={classes.descContainerText}><p className={classes.desc}>I am Ronnie Pence, a New York based artist and creative technologist combining data, machine learning, and other technologies with thoughtful design to create multisensory experiences that drive compelling narratives through digital screens and beyond.</p></div> : <X includeText />}
                 </div>
                 <div className={classes.nav}>
                     <ul>
+						
                         <li><a href="#">Work</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="/about">About</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
