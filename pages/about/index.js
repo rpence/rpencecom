@@ -31,7 +31,8 @@ const useStyles = makeStyles((props) => {
 			paddingRight: '20px'
 		},
 		title: {
-			lineHeight: '1.6'
+			lineHeight: '1.6',
+			letterSpacing: '1px'
 		},
 		video: {
 			width: '380px'
