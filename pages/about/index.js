@@ -36,6 +36,32 @@ const useStyles = makeStyles((props) => {
 		},
 		video: {
 			width: '380px'
+		},
+		spacer: {
+			margin: '50px 0'
+		},
+		strong: {
+            marginBottom: '20px',
+            display: 'block'
+        },
+		contact: {
+			borderTop: '3px solid #000',
+
+			'& ul': {
+				listStyleType: 'none',
+				margin: 0,
+				padding: 0,
+			},
+
+			'& li': {
+				display: 'inline-block',
+				padding: '25px 0',
+				width: '50%',
+				borderBottom: '1px solid #000',
+				'&:first-of-type': {
+					width: '100%'
+				}
+			}
 		}
 
 	}
@@ -72,6 +98,18 @@ export default function Index(props) {
 						</div>
 						<div className={classes.contentRight}>
 							<h1 className={classes.title}>I am Ronnie Pence— <br />a New York based artist and creative technologist combining data, machine learning, and other technologies with thoughtful design to create multisensory experiences that drive compelling narratives through digital screens and beyond.</h1>
+							<div className={classes.spacer}></div>
+							<p>Interested in what you see and want to work together? Get in touch!</p>
+							<div className={classes.spacer}></div>
+							<strong className={classes.strong}>// Contact </strong>
+							<a name="contact"></a>
+							<div className={classes.contact}>
+								<ul>
+									<li><a href="mailto:hello@ronniepence.com">hello[at]ronniepence.com</a></li>
+									<li><a href="https://twitter.com/ronniepence" target="_blank">Twitter</a></li>
+									<li><a href="https://www.instagram.com/ronnielpence/" target="_blank">Instagram</a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
