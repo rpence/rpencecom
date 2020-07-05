@@ -36,6 +36,9 @@ const useStyles = makeStyles((props) => {
 				borderLeft: 0
 			}
 		},
+		menuContentInner: {
+			overflow: 'scroll'
+		},
 		toggled: {
 			left: '50px'
 		},
@@ -57,7 +60,7 @@ const useStyles = makeStyles((props) => {
 			left: '40px'
         },
         extraPadding: {
-            height: '150px'
+			height: '350px',
         }
 	}
 })
@@ -73,14 +76,16 @@ export default function ToggleWorkList(props) {
 
     return (
         <div className={`${classes.menuContent} ${toggleState ? classes.toggled : null}`}>
-            <div 
-                className={`${classes.draggable} ${toggleState ? classes.toggledDraggable : null}`}
-                onClick={(() => handleToggle())}
-            >⇿</div>
-            <All 
-                data={props.data}
-                hideFeatured />
-            <div className={classes.extraPadding} />
+			<div className={classes.menuContentInner}>
+				<div 
+					className={`${classes.draggable} ${toggleState ? classes.toggledDraggable : null}`}
+					onClick={(() => handleToggle())}
+				>⇿</div>
+				<All 
+					data={props.data}
+					hideFeatured />
+				<div className={classes.extraPadding} />
+			</div>
         </div>
     )
 }
