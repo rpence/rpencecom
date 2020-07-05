@@ -100,6 +100,7 @@ const useStyles = makeStyles((props) => {
 			'@media only screen and (max-width: 768px)': {
 				flexBasis: 'unset',
 				flexGrow: 1,
+				borderRight: 0,
 			},
 
 			'& ul': {
