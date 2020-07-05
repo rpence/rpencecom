@@ -20,7 +20,7 @@ const useStyles = makeStyles((props) => {
 
 			'@media only screen and (max-width: 768px)': {
 				flexDirection: 'row',
-				borderBottom: 0
+				borderBottom: '1px solid #000'
 			}
 		},
 		logo: {
@@ -94,12 +94,13 @@ const useStyles = makeStyles((props) => {
 			borderLeft: '1px solid #000',
 
 			'@media only screen and (max-width: 1024px)': {
-				flexBasis: '200px'
+				flexBasis: '200px',
 			},
 
-			// '@media only screen and (max-width: 768px)': {
-				
-			// },
+			'@media only screen and (max-width: 768px)': {
+				flexBasis: 'unset',
+				flexGrow: 1,
+			},
 
 			'& ul': {
 				listStyle: 'none',
