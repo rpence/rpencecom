@@ -43,7 +43,11 @@ const useStyles = makeStyles((props) => {
 		},
 		title: {
 			lineHeight: '1.6',
-			letterSpacing: '1px'
+			letterSpacing: '1px',
+
+			'@media only screen and (max-width: 768px)': {
+				fontSize: '1.1rem'
+			}
 		},
 		video: {
 			width: '380px',

@@ -42,7 +42,7 @@ const useStyles = makeStyles((props) => {
 			},
 
 			'@media only screen and (max-width: 768px)': {
-				flexBasis: '100%'
+				flexBasis: '250px'
 			}
 
 		},
@@ -97,9 +97,9 @@ const useStyles = makeStyles((props) => {
 				flexBasis: '200px'
 			},
 
-			'@media only screen and (max-width: 768px)': {
-				display: 'none'
-			},
+			// '@media only screen and (max-width: 768px)': {
+				
+			// },
 
 			'& ul': {
 				listStyle: 'none',
