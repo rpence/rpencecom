@@ -24,18 +24,32 @@ const useStyles = makeStyles((props) => {
 			}
 		},
 		mainContentInner: {
-			display: 'flex'
+			display: 'flex',
+			'@media only screen and (max-width: 768px)': {
+				flexDirection: 'column'
+			}
 		},
 		contentLeft: {
 			flexBasis: '380px',
-			paddingRight: '20px'
+			paddingRight: '20px',
+
+			'@media only screen and (max-width: 768px)': {
+				flexBasis: '100%',
+				paddingRight: '0',
+				order: 2,
+				marginTop: '40px'
+			}
+
 		},
 		title: {
 			lineHeight: '1.6',
 			letterSpacing: '1px'
 		},
 		video: {
-			width: '380px'
+			width: '380px',
+			'@media only screen and (max-width: 768px)': {
+				width: '100%',
+			}
 		},
 		spacer: {
 			margin: '50px 0'
