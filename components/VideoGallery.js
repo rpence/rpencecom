@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 
+import { RichText } from 'prismic-reactjs'
+
 
 const useStyles = makeStyles((props) => {
     return {
@@ -33,7 +35,7 @@ const useStyles = makeStyles((props) => {
         },
         video: {
             maxWidth: '100%',
-            maxHeight: '100%'
+            maxHeight: 'calc(100vh - 30px)'
         }
 
     }
@@ -51,17 +53,21 @@ export default function VideoGallery(props) {
             <div className={classes.galleryBlock}>
                 {props.items.map((item) => {
                     return (
-                        <div className={classes.videoContainer}>
-                            <video
-                                muted
-                                autoPlay
-                                playsInline
-                                loop
-                                className={classes.video}
-                            >
-                                <source src={item.video_url} type="video/mp4" />
-                            </video>
-                        </div>
+                        <>
+                            <div className={classes.videoContainer}>
+                                <video
+                                    muted
+                                    autoPlay
+                                    playsInline
+                                    loop
+                                    className={classes.video}
+                                >
+                                    <source src={item.video_url} type="video/mp4" />
+                                </video>
+                                {RichText.render(item.caption)}
+                            </div>
+                        </>
+
                     )
                 })}
             </div>
