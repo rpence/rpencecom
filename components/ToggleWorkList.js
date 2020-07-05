@@ -16,7 +16,7 @@ const useStyles = makeStyles((props) => {
 		menuContent: {
 			position: 'fixed',
 			left: 'calc(100% - 101px)',
-			height: '100%',
+			minHeight: '100%',
 			overflow: 'scroll',
 			width: '100vw',
 			borderLeft: '1px solid #000',

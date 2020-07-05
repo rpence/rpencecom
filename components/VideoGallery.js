@@ -8,6 +8,7 @@ const useStyles = makeStyles((props) => {
             display: 'flex',
             maxWidth: '100%',
             position: 'relative',
+            maxHeight: 'calc(100vh - 30px)',
 
             '@media only screen and (max-width: 768px)': {
                 flexBasis: '100%',
@@ -32,6 +33,7 @@ const useStyles = makeStyles((props) => {
         },
         video: {
             maxWidth: '100%',
+            maxHeight: '100%'
         }
 
     }
