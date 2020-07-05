@@ -9,13 +9,17 @@ const useStyles = makeStyles((props) => {
             margin: '30px 0',
             display: 'flex', 
 
-            '@media only screen and (max-width: 768px)': {
-                flexDirection: 'column'
-            },
-
             '& > div': {
                 minWidth: '23%'
-            }
+            },
+
+            '@media only screen and (max-width: 768px)': {
+                flexWrap: 'wrap',
+                
+                '& > div': {
+                    minWidth: '50%'
+                }
+            },
         },
         strong: {
             display: 'block',
