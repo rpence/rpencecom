@@ -62,12 +62,14 @@ const useStyles = makeStyles((props) => {
 export default function Featured(props) {
 
     const classes = useStyles();
+
+    const featured = props.data.reverse();
     
     return (
         <>
             <strong className={classes.strong}>//Featured Work </strong>
             <div className={classes.featuredBlock}> 
-                {props.data.map((item, index) => {
+                {featured.map((item, index) => {
                     return (
                         <div className={classes.blockContainerLink} key={item.uid}>
                             <Link href={`work/${item.uid}`}>
