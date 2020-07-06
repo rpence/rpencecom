@@ -11,6 +11,7 @@ const useStyles = makeStyles((props) => {
             maxWidth: '100%',
             position: 'relative',
             maxHeight: 'calc(100vh - 30px)',
+            justifyContent: 'center',
 
             '@media only screen and (max-width: 768px)': {
                 flexBasis: '100%',
@@ -35,8 +36,11 @@ const useStyles = makeStyles((props) => {
         },
         video: {
             maxWidth: '100%',
-            maxHeight: 'calc(100vh - 30px)'
-        }
+            maxHeight: 'calc(100vh - 50px)',
+            margin: '0 auto',
+            display: 'block'
+        },
+        
 
     }
 });
@@ -64,10 +68,8 @@ export default function VideoGallery(props) {
                                 >
                                     <source src={item.video_url} type="video/mp4" />
                                 </video>
-                                {RichText.render(item.caption)}
                             </div>
                         </>
-
                     )
                 })}
             </div>
