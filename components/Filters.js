@@ -68,9 +68,9 @@ export default function Filters({filterToggle}) {
                         filterToggle={filterToggle}
                         uid="data-visualization"/>
                     <CheckMark 
-                        label="Video"
+                        label="Motion"
                         filterToggle={filterToggle}
-                        uid="video" />
+                        uid="motion" />
                     <CheckMark 
                         label="Everything Else"
                         filterToggle={filterToggle}
