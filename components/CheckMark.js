@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => {
             lineHeight: 0
         },
         disabled: {
-            opacity: '.5',
+            opacity: '.25',
             cursor: 'not-allowed'
         }
     }
