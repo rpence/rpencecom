@@ -90,8 +90,7 @@ export default function Filters({filterToggle}) {
                     <CheckMark 
                         label="Logos"
                         filterToggle={filterToggle}
-                        uid="logos"
-                        disabled />
+                        uid="logos" />
                     <CheckMark 
                         label="Machine Learning"
                         filterToggle={filterToggle}
