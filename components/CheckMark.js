@@ -21,6 +21,10 @@ const useStyles = makeStyles(() => {
             border: '1px solid #000',
             marginRight: '10px',
             lineHeight: 0
+        },
+        disabled: {
+            opacity: '.5',
+            cursor: 'not-allowed'
         }
     }
 
@@ -34,15 +38,17 @@ export default function CheckMark(props) {
     
 
     const handleToggle = (uid) => {
-        props.filterToggle(uid)
-        setToggle(!toggle)
+        if(!props.disabled) {
+            props.filterToggle(uid)
+            setToggle(!toggle)
+        }
     }
 
 
     return (
         <>
             <div 
-                className={classes.checkmarkContainer}
+                className={`${classes.checkmarkContainer} ${props.disabled ? classes.disabled : null}`}
                 onClick={(() => handleToggle(props.uid))}>
                 <div className={classes.checkmark}>
                     {toggle && <X />}

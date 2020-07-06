@@ -12,10 +12,9 @@ const useStyles = makeStyles((props) => {
             '& > div': {
                 minWidth: '23%'
             },
-
             '@media only screen and (max-width: 768px)': {
                 flexWrap: 'wrap',
-                
+
                 '& > div': {
                     minWidth: '50%'
                 }
@@ -45,21 +44,25 @@ export default function Filters({filterToggle}) {
                     <CheckMark 
                         filterToggle={filterToggle}
                         label="Photography"
-                        uid="photography" />
+                        uid="photography"
+                        disabled />
                     <CheckMark
                         filterToggle={filterToggle}
                         label="Objects"
-                        uid="objects" />
+                        uid="objects"
+                        disabled />
                     <CheckMark
                         filterToggle={filterToggle}
                         label="Games"
-                        uid="games" />
+                        uid="games"
+                        disabled />
                 </div>
                 <div>
                     <CheckMark 
                         filterToggle={filterToggle}
                         label="Hardware"
-                        uid="hardware"/>
+                        uid="hardware"
+                        disabled/>
                     <CheckMark label="Data Visualization" 
                         label="Data Visualization" 
                         filterToggle={filterToggle}
@@ -77,15 +80,18 @@ export default function Filters({filterToggle}) {
                     <CheckMark 
                         label="Metal Working"
                         filterToggle={filterToggle}
-                        uid="metal-working" />
+                        uid="metal-working"
+                        disabled />
                     <CheckMark 
                         label="Craft Builds"
                         filterToggle={filterToggle}
-                        uid="craft-builds" />
+                        uid="craft-builds"
+                        disabled />
                     <CheckMark 
                         label="Logos"
                         filterToggle={filterToggle}
-                        uid="logos" />
+                        uid="logos"
+                        disabled />
                     <CheckMark 
                         label="Machine Learning"
                         filterToggle={filterToggle}
@@ -95,7 +101,8 @@ export default function Filters({filterToggle}) {
                     <CheckMark 
                         label="Web Development"
                         filterToggle={filterToggle}
-                        uid="web-development" />
+                        uid="web-development"
+                        disabled />
                     <CheckMark 
                         label="Data Objects"
                         filterToggle={filterToggle}
@@ -103,11 +110,13 @@ export default function Filters({filterToggle}) {
                     <CheckMark 
                         label="Text Posts"
                         filterToggle={filterToggle}
-                        uid="text-posts" />
+                        uid="text-posts"
+                        disabled />
                     <CheckMark 
                         label="Code"
                         filterToggle={filterToggle}
-                        uid="code" />
+                        uid="code"
+                        disabled />
                 </div>
             </div>
         </>
