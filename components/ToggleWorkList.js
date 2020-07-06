@@ -61,6 +61,9 @@ const useStyles = makeStyles((props) => {
         },
         extraPadding: {
 			height: '350px',
+			'@media only screen and (max-width: 768px)': {
+				height: '100px'
+			}
         }
 	}
 })
