@@ -111,7 +111,7 @@ export default function Index(props) {
 								loop
 								className={classes.video}
 							>
-								<source src="http://spectroscapes.com/static/video/ronnie.mp4" type="video/mp4" />
+								<source src="https://media.ronniepence.com/ronnie.mp4" type="video/mp4" />
 							</video>
 						</div>
 						<div className={classes.contentRight}>
