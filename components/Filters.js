@@ -100,8 +100,7 @@ export default function Filters({filterToggle}) {
                     <CheckMark 
                         label="Web Development"
                         filterToggle={filterToggle}
-                        uid="web-development"
-                        disabled />
+                        uid="web-development" />
                     <CheckMark 
                         label="Data Objects"
                         filterToggle={filterToggle}
