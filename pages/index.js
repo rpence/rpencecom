@@ -50,6 +50,7 @@ export default function Index(props) {
 				<title>Ronnie Pence · Creative Technologist</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 				<link rel="icon" type="image/png" href="/static/logo-dark.png"></link>
+				<meta name="description" content="I am Ronnie Pence—a New York based artist and creative technologist combining data, machine learning, and other technologies with thoughtful design to create multisensory experiences that drive compelling narratives through digital screens and beyond." />
 			</Head>
 			<Layout>
 				<div className={classes.blockContainer}>

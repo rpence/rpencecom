@@ -72,7 +72,9 @@ export default function Featured(props) {
                 {featured.map((item, index) => {
                     return (
                         <div className={classes.blockContainerLink} key={item.uid}>
-                            <Link href={`work/${item.uid}`}>
+                            <Link 
+                                href="/work/[id]"
+                                as={`work/${item.uid}`}>
                                 <a>
                                     <div className={classes.block}>
                                         <div className={classes.featuredImage}>

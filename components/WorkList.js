@@ -197,7 +197,9 @@ export default function WorkList(props) {
 
                         return (
                             <div className={classes.blockContainerLink} key={item.uid}>
-                                <Link href={`/work/${item.uid}`}>
+                                <Link 
+                                    href="/work/[id]"
+                                    as={`/work/${item.uid}`}>
                                     <a 
                                         onMouseEnter={() => handleHover(item.data.preview_image.url)}
                                         onMouseLeave={() => handleHover(null)}>
