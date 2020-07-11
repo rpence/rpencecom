@@ -187,7 +187,7 @@ export default function WorkList(props) {
 
             {posts.length > 0 ? (
                 <>
-                    {setImage && <img src={image} className={classes.hoverImg} />}
+                    {setImage && <img src={image} className={classes.hoverImg} alt="" />}
 
                     {posts.map((item, index) => {
 

@@ -79,7 +79,7 @@ export default function Featured(props) {
                                     <div className={classes.block}>
                                         <div className={classes.featuredImage}>
                                             <LazyLoad>
-                                                <img src={item.data.preview_image.url} />
+                                                <img src={item.data.preview_image.url} alt={RichText.asText(item.data.title)} />
                                             </LazyLoad>
                                         </div>
                                         <div className={classes.title}>
