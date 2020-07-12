@@ -36,7 +36,12 @@ const useStyles = makeStyles((props) => {
         max: {
             maxWidth: '2000px',
             margin: '0 auto',
-            maxHeight: 'calc(100vh - 50px)'
+            maxHeight: 'calc(100vh - 50px)',
+
+            '@media only screen and (max-width: 768px)': {
+                maxHeight: '100%',
+                maxWidth: '100%'
+            },
         }
     }
 });
