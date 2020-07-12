@@ -1,8 +1,11 @@
 import React, {useEffect, useState } from 'react';
-import { makeStyles, StylesContext } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((props) => {
     return {
+		text: {
+			letterSpacing: '1.3px'
+		},
 		lighten: {
 			opacity: '.6'
 		}
@@ -52,8 +55,8 @@ export default function Music(props) {
 	})
 
     return (
-        <>
-			&nbsp;&nbsp;&nbsp;&nbsp; This website is a work in progress &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; BLM &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; ♫ {trackName} — {trackArtist} <span className={classes.lighten}>{listeningNow ? 'Playing Now' : null}</span> <span className={classes.lighten}>{!listeningNow && lastPlayed}</span> ♫ &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; This website is a work in progress &nbsp;&nbsp;&nbsp;&nbsp;· &nbsp;&nbsp;&nbsp;&nbsp;BLM&nbsp;&nbsp;&nbsp;&nbsp;· &nbsp;&nbsp;&nbsp;&nbsp; HAPPY PRIDE &nbsp;&nbsp;&nbsp;&nbsp; · &nbsp;&nbsp;&nbsp;&nbsp;
-        </>
+        <span className={classes.text}>
+			&nbsp;&nbsp;&nbsp;&nbsp; Last Updated: Monday, 09-Aug-00 01:29:42 UTC &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; Version: 1.10.1594591838982 &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; ♫ {trackName} — {trackArtist} <span className={classes.lighten}>{listeningNow ? 'Playing Now' : null}</span> <span className={classes.lighten}>{!listeningNow && lastPlayed}</span> ♫ &nbsp;&nbsp;&nbsp;&nbsp;·
+        </span>
     )
 }

@@ -41,6 +41,7 @@ const Marquee = (props) => {
         
         const marq = ref.current;
         let requestId, i = 0;
+        const speed = .76;
 
         if(props.dir === "down") {
             i = marq.clientHeight / 2
@@ -52,21 +53,21 @@ const Marquee = (props) => {
 
             if(props.dir === "down") {
                 if(i > 0) {
-                    i -= .5;
+                    i -= speed;
                 } else {
                     i = height / 2;
                 }
             }
             else if(props.dir === "ltr") {
                 if(i <= width / 2) {
-                    i += .5;
+                    i += speed;
                 } else {
                     i = 0;
                 }
             }
             else {
                 if(i <= height / 2) {
-                    i += .5;
+                    i += speed;
                 } else {
                     i = 0;
                 }
