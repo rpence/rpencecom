@@ -56,7 +56,7 @@ export default function Music(props) {
 
     return (
         <span className={classes.text}>
-			&nbsp;&nbsp;&nbsp;&nbsp; Last Updated: Monday, 09-Aug-00 01:29:42 UTC &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; Version: 1.10.1594591838982 &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; ♫ {trackName} — {trackArtist} <span className={classes.lighten}>{listeningNow ? 'Playing Now' : null}</span> <span className={classes.lighten}>{!listeningNow && lastPlayed}</span> ♫ &nbsp;&nbsp;&nbsp;&nbsp;·
+			&nbsp;&nbsp;&nbsp;&nbsp; Last Updated: Sunday, July 12, 2020 6:22:15 pm UTC-4 &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; Version: 1.10.1594591838982 &nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp; ♫ {trackName} — {trackArtist} <span className={classes.lighten}>{listeningNow ? 'Playing Now' : null}</span> <span className={classes.lighten}>{!listeningNow && lastPlayed}</span> ♫ &nbsp;&nbsp;&nbsp;&nbsp;·
         </span>
     )
 }
