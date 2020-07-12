@@ -42,7 +42,14 @@ const useStyles = makeStyles((props) => {
                 maxHeight: '100%',
                 maxWidth: '100%'
             },
+        },
+        maxContainer: {
+            backgroundColor: 'rgba(20, 20, 25, 1)',
+            width: '100% !important',
+            padding: '100px !important',
+            margin: '30px 0 !important'
         }
+        
     }
 });
 
@@ -55,7 +62,7 @@ export default function Gallery(props) {
             <div className={classes.galleryBlock}>
                 {props.items.map((item) => {
                     return (
-                        <div>
+                        <div className={props.slice_label ? classes.maxContainer : null}>
                             <LazyLoad>
                                 <img className={props.slice_label ? classes.max : null} src={item.image.url} />
                             </LazyLoad>
