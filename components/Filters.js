@@ -44,8 +44,7 @@ export default function Filters({filterToggle}) {
                     <CheckMark 
                         filterToggle={filterToggle}
                         label="Photography"
-                        uid="photography"
-                        disabled />
+                        uid="photography" />
                     <CheckMark
                         filterToggle={filterToggle}
                         label="Objects"
