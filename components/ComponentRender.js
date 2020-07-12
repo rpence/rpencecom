@@ -12,15 +12,15 @@ export default function ComponentRender(props) {
             {props.data.map(({ slice_type, ...props }) => {
                 switch (slice_type) {
                 case 'gallery':
-                    return Gallery(props)
+                    return <Gallery {...props} />
                 case 'video_gallery':
-                        return VideoGallery(props)
+                        return <VideoGallery {...props} />
                 case 'embed':
-                    return Embed(props)
+                    return <Embed {...props} />
                 case 'text_block':
-                    return TextBlock(props)
+                    return <TextBlock {...props} />
                 case 'image___video':
-                    return ImageVideo(props)
+                    return <ImageVideo {...props} />
                 default:
                     return null;
                 }

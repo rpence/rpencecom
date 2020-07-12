@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, StylesContext } from '@material-ui/styles';
 import LazyLoad from 'react-lazyload';
 
 
@@ -8,6 +8,7 @@ const useStyles = makeStyles((props) => {
         galleryBlock: {
             display: 'flex',
             maxWidth: '100%',
+            textAlign: 'center',
 
             '@media only screen and (max-width: 768px)': {
                 flexBasis: '100%',
@@ -18,6 +19,7 @@ const useStyles = makeStyles((props) => {
 
             '& div': {
                 padding: '10px',
+                margin: '0 auto',
 
                 '@media only screen and (max-width: 768px)': {
                     padding: '10px 0'
@@ -30,6 +32,11 @@ const useStyles = makeStyles((props) => {
                     paddingRight: 0
                 }
             }
+        },
+        max: {
+            maxWidth: '2000px',
+            margin: '0 auto',
+            maxHeight: 'calc(100vh - 50px)'
         }
     }
 });
@@ -45,7 +52,7 @@ export default function Gallery(props) {
                     return (
                         <div>
                             <LazyLoad>
-                                <img src={item.image.url} />
+                                <img className={props.slice_label ? classes.max : null} src={item.image.url} />
                             </LazyLoad>
                         </div>
                     )
