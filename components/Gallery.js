@@ -47,7 +47,13 @@ const useStyles = makeStyles((props) => {
             backgroundColor: 'rgba(20, 20, 25, 1)',
             width: '100% !important',
             padding: '100px !important',
-            margin: '30px 0 !important'
+            margin: '30px 0 !important',
+
+            '@media only screen and (max-width: 768px)': {
+                padding: '0 !important',
+                margin: '10px 0 !important',
+                backgroundColor: 'transparent'
+            }
         }
         
     }
