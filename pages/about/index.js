@@ -117,7 +117,9 @@ export default function Index(props) {
 						<div className={classes.contentRight}>
 							<h1 className={classes.title}>I am Ronnie Pence— <br />a New York based artist and creative technologist combining data, machine learning, and other technologies with thoughtful design to create multisensory experiences that drive compelling narratives through digital screens and beyond.</h1>
 							<div className={classes.spacer}></div>
-							<p>Interested in what you see and want to work together? Get in touch!</p>
+							<p>This website serves as a central repository for all of my creative and technological endeavors, including data visualizations and objects, web design and development, travel photography, and creative explorations in machine learning, among my other ventures in making and doing.</p>							
+							<div className={classes.spacer}></div>
+							<p>Interested in making something together? Get in touch!</p>
 							<div className={classes.spacer}></div>
 							<strong className={classes.strong}>// Contact </strong>
 							<a name="contact"></a>
