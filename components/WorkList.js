@@ -201,6 +201,7 @@ export default function WorkList(props) {
                                     href="/work/[id]"
                                     as={`/work/${item.uid}`}>
                                     <a 
+                                        onClick={(() => props.onItemClick())}
                                         onMouseEnter={() => handleHover(item.data.preview_image.url)}
                                         onMouseLeave={() => handleHover(null)}>
                                         <div>

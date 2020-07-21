@@ -8,7 +8,7 @@ import { RichText } from 'prismic-reactjs'
 
 
 const apiEndpoint = 'https://ronniepence.cdn.prismic.io/api/v2'
-const accessToken = 'MC5YdFhpTGhBQUFCNEFKNlY4.Tu-_vQ3vv70wBlfvv71zPe-_ve-_ve-_ve-_ve-_ve-_ve-_vXfvv71s77-9LUdhQ0FDbB_vv73vv71t' 
+const accessToken = 'MC5YdFhpTGhBQUFCNEFKNlY4.Tu-_vQ3vv70wBlfvv71zPe-_ve-_ve-_ve-_ve-_ve-_ve-_vXfvv71s77-9LUdhQ0FDbB_vv73vv71t'
 const Client = Prismic.client(apiEndpoint, { accessToken })
 
 const useStyles = makeStyles((props) => {
@@ -22,7 +22,7 @@ const useStyles = makeStyles((props) => {
 			borderLeft: '1px solid #000',
 			top: '0',
 			backgroundColor: '#fff',
-            paddingLeft: '30px',
+			paddingLeft: '30px',
 			paddingBottom: '250px',
 
 			'@media only screen and (max-width: 768px)': {
@@ -58,37 +58,38 @@ const useStyles = makeStyles((props) => {
 		},
 		toggledDraggable: {
 			left: '40px'
-        },
-        extraPadding: {
+		},
+		extraPadding: {
 			height: '350px',
 			'@media only screen and (max-width: 768px)': {
 				height: '100px'
 			}
-        }
+		}
 	}
 })
 
 export default function ToggleWorkList(props) {
 
-    const classes = useStyles();
-    const [toggleState, setToggleState] = useState();
+	const classes = useStyles();
+	const [toggleState, setToggleState] = useState();
 
-    const handleToggle = () => {
-        setToggleState(!toggleState);
-    }
+	const handleToggle = () => {
+		setToggleState(!toggleState);
+	}
 
-    return (
-        <div className={`${classes.menuContent} ${toggleState ? classes.toggled : null}`}>
+	return (
+		<div className={`${classes.menuContent} ${toggleState ? classes.toggled : null}`}>
 			<div className={classes.menuContentInner}>
-				<div 
+				<div
 					className={`${classes.draggable} ${toggleState ? classes.toggledDraggable : null}`}
 					onClick={(() => handleToggle())}
 				>⇿</div>
-				<All 
+				<All
 					data={props.data}
-					hideFeatured />
+					hideFeatured
+					onItemClick={(() => handleToggle())} />
 				<div className={classes.extraPadding} />
 			</div>
-        </div>
-    )
+		</div>
+	)
 }
